@@ -1,1 +1,1 @@
-# pan-pan-framework
+# simian 2D game engine
