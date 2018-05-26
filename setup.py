@@ -5,7 +5,7 @@ from os import path
 here = path.abspath(path.dirname(__file__))
 
 setup(
-    name='simian-engine',
+    name='simian_engine',
 
     version='0.0.1',
 
@@ -19,7 +19,7 @@ setup(
 
     entry_points={
         'console_scripts': [
-            'simian = src.cli.cmd:main',
+            'simian = simian.cli.cmd:main',
         ],
     },
 )
