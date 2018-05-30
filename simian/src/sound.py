@@ -8,7 +8,7 @@ This class creates a controller to musics on game
 """
 Variables used to define state and default music path
 """
-music_name = "../assets/music/"
+MUSIC_PATH = "simian/assets/music/"
 PLAY_ONCE = 0
 PLAY_LOOPING = -1
 
@@ -27,7 +27,7 @@ class Sound:
 
         try:
             logging.info("Load music" + self.music_name)
-            pygame.mixer.music.load(music_name + self.music_name)
+            pygame.mixer.music.load(MUSIC_PATH + self.music_name)
 
             logging.info("Play music" + self.music_name)
             pygame.mixer.music.play(PLAY_LOOPING)
