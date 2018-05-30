@@ -32,6 +32,9 @@ class Sound:
             logging.info("Play music" + self.music_name)
             pygame.mixer.music.play(PLAY_LOOPING)
 
+            logging.info("Looping music")
+            while pygame.mixer.music.get_busy():
+                pygame.time.Clock().tick(100000000)
             return True
         except:
             logging.info("Music file couldn't be found")
