@@ -30,6 +30,15 @@ class SceneManager(object):
         else:
             raise ValueError("This scene doesn't exist.")
 
+    def load_scene(self, scene_name):
+        scene = self.find_scene(scene_name)
+
+        if(scene is not None):
+            self.current_scene = scene
+            self.current_scene.load()
+        else:
+            raise ValueError("This scene does not exist")
+
     def is_scene_on_list(self, scene_name):
         scene = self.find_scene(scene_name)
 
