@@ -1,6 +1,6 @@
 import pygame
 
-from BaseScene import BaseScene
+from base_scene import BaseScene
 
 class TestScene(BaseScene):
     def __init__(self, name,id):
