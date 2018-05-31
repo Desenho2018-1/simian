@@ -17,7 +17,19 @@ class SceneManager(object):
         else:
             raise ValueError("This scene already exists")
 
-    
+    def remove_scene(self, scene_name):
+        scene_to_remove = self.find_scene(scene_name)
+
+        if(scene_to_remove is not None):
+            self.scene_list.remove(scene_to_remove)
+
+            # If we removed the current Scene, update the member variable
+            # So we don't run a scene that is not in the list
+            if(scene_name == self.current_scene.name):
+                self.current_scene = BaseScene()
+        else:
+            raise ValueError("This scene doesn't exist.")
+
     def is_scene_on_list(self, scene_name):
         scene = self.find_scene(scene_name)
 
@@ -26,3 +38,9 @@ class SceneManager(object):
         else:
             return True
 
+    def find_scene(self, scene_name):
+        for scene in self.scene_list:
+            if(scene.name == scene_name):
+                return scene
+            else:
+                raise ValueError("This scene doesn't exist")
