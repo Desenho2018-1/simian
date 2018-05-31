@@ -2,26 +2,7 @@
 GameObject classes.
 All objects in a game should be represented by this classes.
 """
-
-
-class Position:
-    """
-    A position represents a point in a 2D space.
-    """
-
-    def __init__(self, x=None, y=None):
-        self.x = x
-        self.y = y
-
-
-class Size:
-    """
-    Size represents how big something is by measuring height and width.
-    """
-
-    def __init__(self, height=None, width=None):
-        self.h = height
-        self.w = width
+from physics import space
 
 
 class GameObject:
@@ -32,8 +13,8 @@ class GameObject:
     """
 
     def __init__(self, x=None, y=None, height=None, width=None):
-        self.pos = Position(x, y)
-        self.size = Size(height, width)
+        self.pos = space.Position(x, y)
+        self.size = space.Size(height, width)
 
     def update(self):
         """
@@ -46,7 +27,7 @@ class GameObject:
                         self.color = next_color(self.color)
         """
         pass
-    
+
     def draw(self, renderable_object):
         """
         This method is called every frame of the game loop.
