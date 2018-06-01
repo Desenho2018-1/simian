@@ -2,21 +2,17 @@ import pygame
 import logging
 from abc import ABC, abstractmethod
 
-"""
-This class creates a controller to musics on game
-"""
 
 """
-Variables used to define state and default music path
+Variables used to define state
 """
-MUSIC_PATH = "simian/assets/music/"
 PLAY_ONCE = 0
 PLAY_LOOPING = -1
 
 class Audio(ABC):
 
-    def __init__(self, music_path):
-        self.music_path = music_path
+    def __init__(self, audio_path):
+        self.audio_path = audio_path
 
     @abstractmethod
     def play(self):
@@ -34,14 +30,16 @@ class Sound(Audio):
     """
     Used to play sound effects on a game, with maximum of eight being played
     played at once in a game.
+    The sound file must be an OGG audio file or from an uncompressed WAV
     """
-    def __init__(self, music_path):
-        Audio.__init__(self, music_path)
-        self.sound = pygame.mixer.Sound(music_path)
+    def __init__(self, sound_path):
+        Audio.__init__(self, sound_path)
+        self.sound = pygame.mixer.Sound(sound_path)
 
     def play(self):
         try:
             self.sound.play()
+            return True
         except:
             logging.info("Sound file couldn't be found")
 
@@ -49,7 +47,7 @@ class Sound(Audio):
         self.sound.stop()
 
     def fade_out(self, time):
-        self.sound.fade_out()
+        self.sound.fade_out(time)
 
 class Music(Audio):
     """
@@ -58,18 +56,12 @@ class Music(Audio):
     """
     def __init__(self, music_path):
         Audio.__init__(self, music_path)
-        self.sound = pygame.mixer.Sound(music_path)
+        pygame.mixer.music.load(music_path)
 
     def play(self):
-        assert self.music_name != "", "INVALID NAME"
-
         try:
-            logging.info("Load music" + self.music_name)
-            pygame.mixer.music.load(MUSIC_PATH + self.music_name)
-
             logging.info("Play music" + self.music_name)
             pygame.mixer.music.play(PLAY_LOOPING)
-
             logging.info("Looping music")
             while pygame.mixer.music.get_busy():
                 pygame.time.Clock().tick(100000000)
@@ -80,3 +72,6 @@ class Music(Audio):
 
     def stop(self):
         pygame.mixer.music.stop()
+
+    def fade_out(self, time):
+        pygame.mixer.music.fadeout(time)
