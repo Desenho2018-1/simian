@@ -4,12 +4,9 @@ All renderable objects must use this class
 to render.
 """
 import pygame
-import sys
-sys.path.append("../physics")
-sys.path.append("../utils/")
 
-from space import Size
-from singleton import Singleton
+from simian.physics.space import Size
+from simian.utils.singleton import Singleton
 
 
 class GameCanvas(metaclass=Singleton):

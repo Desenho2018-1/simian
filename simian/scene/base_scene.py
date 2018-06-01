@@ -5,9 +5,7 @@ This class create base structure for
 creation scenes in games
 """
 
-import sys
-sys.path.append("../utils/exception")
-from unimplemented_method import NotOverriddenMethod
+from simian.utils.exception.unimplemented_method import NotOverriddenMethod
 
 class BaseScene(object):
 
@@ -16,7 +14,7 @@ class BaseScene(object):
         self.name = name
         self.id = id
 
-    def draw(self, grafics):
+    def draw(self, graphics):
         raise NotOverriddenMethod("draw")
 
     def update(self, time_elapsed):
