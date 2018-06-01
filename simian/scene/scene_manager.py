@@ -7,15 +7,16 @@ class SceneManager(object):
 
     scene_list = [current_scene]
 
-    def add_scene(self, scene): 
+    def add_scene(self, *args): 
         # Check if scene already exists in list.
-        on_list = self.is_scene_on_list(scene.name)
-
-        # If it isn't, append it in list.
-        if(not on_list):
-            self.scene_list.append(scene)
-        else:
-            raise ValueError("This scene already exists")
+        for scene in list(args[0]):
+            if issubclass(type(scene), BaseScene):
+                on_list = self.is_scene_on_list(scene.name)
+                # If it isn't, append it in list.
+                if(not on_list):
+                    self.scene_list.append(scene)
+                else:
+                    raise ValueError("This scene ["+ scene.name +"] already exists")
 
     def remove_scene(self, scene_name):
         scene_to_remove = self.find_scene(scene_name)
@@ -40,12 +41,11 @@ class SceneManager(object):
             raise ValueError("This scene does not exist")
 
     def is_scene_on_list(self, scene_name):
-        scene = self.find_scene(scene_name)
-
-        if(scene is None):
-            return False
-        else:
+        try:
+            self.find_scene(scene_name)
             return True
+        except(ValueError):
+            return False
 
     def find_scene(self, scene_name):
         for scene in self.scene_list:
