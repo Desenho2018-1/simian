@@ -1,6 +1,7 @@
 # simian 2D game engine
 
 Python: v3.6.5
+<<<<<<< HEAD
 pygame: v1.9.3
 
 ## How to setup your environment to contribute to this project
@@ -20,3 +21,6 @@ Then go to our simian folder (where you can see setup.py):
 To quit this virtual environment just type:
 
 $ deactivate
+=======
+pygame: v1.9.3
+>>>>>>> 9b3bd2b09d1ecf5e15beee2115041e35766bd0a5
