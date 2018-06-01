@@ -39,7 +39,4 @@ class GameCanvas(metaclass=Singleton):
         Close the screen
         """
         pygame.display.quit()
-
-while True:
-    a = GameCanvas()
-    a.open()
+        
