@@ -9,6 +9,7 @@ import sys
 sys.path.append("../utils/exception")
 import pygame
 from unimplemented_method import NotOverriddenMethod
+
 class BaseScene(object):
 
 
