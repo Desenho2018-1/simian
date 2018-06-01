@@ -1,24 +1,29 @@
+
+
+"""
+This class create base structure for
+creation scenes in games
+"""
+
 import sys
 sys.path.append("../utils/exception")
-#from simian.utils.expection.unimplemented_method import NotOverridenMethod
 import pygame
-from unimplemented_method import NotOverridenMethod
+from unimplemented_method import NotOverriddenMethod
 class BaseScene(object):
 
-    # This class creates the scene basic structure
 
     def __init__(self, name="DEFAULT", id=0):
         self.name = name
         self.id = id
 
     def draw(self, grafics):
-        raise NotOverridenMethod("draw")
+        raise NotOverriddenMethod("draw")
 
     def update(self, time_elapsed):
-        raise NotOverridenMethod("update")
+        raise NotOverriddenMethod("update")
 
     def load(self):
-        raise NotOverridenMethod("load")
+        raise NotOverriddenMethod("load")
 
     def unload(self):
-        raise NotOverridenMethod("unload")
+        raise NotOverriddenMethod("unload")
