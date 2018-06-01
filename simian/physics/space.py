@@ -22,7 +22,7 @@ class Size:
     Measure unit: pixels
     """
 
-    def __init__(self, height=None, width=None):
+    def __init__(self, width=None, height=None):
         self.h = height
         self.w = width
 
