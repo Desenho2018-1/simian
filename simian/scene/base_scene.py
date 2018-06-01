@@ -1,6 +1,8 @@
+import sys
+sys.path.append("../utils/exception")
+#from simian.utils.expection.unimplemented_method import NotOverridenMethod
 import pygame
-from simian.utils.expection.unimplemented_method import NotOverridenMethod
-
+from unimplemented_method import NotOverridenMethod
 class BaseScene(object):
 
     # This class creates the scene basic structure
