@@ -2,6 +2,7 @@ import pygame
 from simian.window.game_canvas import GameCanvas
 from simian.physics.space import Size
 from simian.utils.singleton import Singleton
+from simian.scene.scene_manager import SceneManager
 
 
 # Game Configuration Constants
@@ -15,8 +16,14 @@ class GameEngine(metaclass=Singleton):
     def load(self):
         game_window_size = Size(GAME_WINDOW_WIDTH, GAME_WINDOW_HEIGHT)
         self.game_canvas = GameCanvas(game_window_size, GAME_NAME)
-        
+        self.scene_manager = SceneManager()
+    
+    def add_scene(self, *args):
+        self.scene_manager.add_scene(args)
 
+    def set_initial_scene(self, scene_name):
+        self.scene_manager.load_scene(scene_name)
+    
     def run(self):
         pygame.init()
         self.load()
