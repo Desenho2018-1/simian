@@ -15,7 +15,7 @@ class GameCanvas(metaclass=Singleton):
     (windows where every renderable object must be rendered)
     """
 
-    def __init__(self, size=None, name='Simian Engine',width=800, height=600):
+    def __init__(self, size=None, name='Game made with Simian',width=800, height=600):
         self.size = size if size else Size(width, height)
         self.name = name
 
@@ -29,7 +29,11 @@ class GameCanvas(metaclass=Singleton):
         """
         Keep the screen open, when on while True
         """
+        self.refresh_screen()
+    
+    def refresh_screen(self):
         pygame.display.flip()
+
 
     def close(self):
         """
