@@ -14,6 +14,13 @@ class Position:
         self.x = x
         self.y = y
 
+    def __call__(self):
+        """
+        Return a tuple representation of the
+        measures to facilitate usage in some contexts.
+        """
+        return (self.x, self.y)
+
 
 class Size:
     """
