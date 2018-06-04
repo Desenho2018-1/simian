@@ -4,7 +4,8 @@ from simian.audio.audios import Audio, Music, Sound
 class AudioManager:
     def __init__(self):
         pygame.mixer.init()
-        self.sounds = sounds[:8]
+        self.sounds = []
+        self.sounds = self.sounds[:8]
         self.music = None
 
     def pause_all(self):
