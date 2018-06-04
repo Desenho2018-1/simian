@@ -13,7 +13,7 @@ setup(
 
     url='https://github.com/Desenho2018-1/simian',
 
-    packages=find_packages(exclude=['contrib', 'docs', 'tests']),
+    packages=find_packages(exclude=['contrib', 'docs', 'tests', 'simian']),
 
     install_requires=['pygame==1.9.3'],
 

@@ -56,19 +56,16 @@ class Music(Audio):
     """
     def __init__(self, music_path):
         Audio.__init__(self, music_path)
-        pygame.mixer.music.load(music_path)
+        print(pygame.mixer.music.load(self.audio_path))
+
 
     def play(self):
-        try:
-            logging.info("Play music" + self.music_name)
-            pygame.mixer.music.play(PLAY_LOOPING)
-            logging.info("Looping music")
-            while pygame.mixer.music.get_busy():
-                pygame.time.Clock().tick(100000000)
-            return True
-        except:
-            logging.info("Music file couldn't be found")
-            return False
+        logging.info("Play music" + self.audio_path)
+        print(pygame.mixer.music.play(PLAY_LOOPING))
+        logging.info("Looping music")
+        while pygame.mixer.music.get_busy():
+            pygame.time.Clock().tick(10)
+        return True
 
     def stop(self):
         pygame.mixer.music.stop()
