@@ -7,7 +7,7 @@ from abc import ABC, abstractmethod
 Variables used to define state
 """
 PLAY_ONCE = 0
-PLAY_LOOPING = -1
+PLAY_LOOPING = 0
 
 class Audio(ABC):
 
