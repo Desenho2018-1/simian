@@ -13,3 +13,9 @@ class SoundTest(unittest.TestCase):
     def test_play_music(self):
         music = Music('assets/audio/music.mp3')
         self.assertTrue(music.play())
+
+
+class AudioManagerTest(unittest.TestCase):
+    def test_constructor_music(self):
+        self.audio_manager = AudioManager()
+        self.assertTrue(self.audio_manager.music is None)
