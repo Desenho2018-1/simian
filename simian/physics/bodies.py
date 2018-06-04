@@ -25,3 +25,9 @@ class RigidBody(GameObject):
         self.restitution = restitution
         self.velocity = velocity if velocity else Vec2(0, 0)
         self.force = force if force else Vec2(0, 0)
+
+    def apply_impulse(self, impulse):
+        """
+        Apply a given impulse to his body.
+        """
+        self.velocity += 1/self.mass * impulse
