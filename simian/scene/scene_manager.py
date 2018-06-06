@@ -31,6 +31,16 @@ class SceneManager(object):
         else:
             raise ValueError("This scene doesn't exist.")
 
+    def load_next_scene(self):
+        scene_list_length = len(self.scene_list)
+        next_scene_index = self.scene_list.index(self.current_scene) + 1
+
+        # Check if the current scene is the last scene of the game
+        if(next_scene_index <= scene_list_length):
+            self.load_scene(self.game_scene_list[next_scene_index].name)
+        else:
+            raise ValueError("The current scene is the last scene")
+
     def load_scene(self, scene_name):
         scene = self.find_scene(scene_name)
 
