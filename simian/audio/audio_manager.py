@@ -26,13 +26,8 @@ class AudioManager:
     Used to add a sound to a list of available sounds that can be used by pygame
     """
     def add_sound(self, sound_path):
-        try:
-            new_sound = Sound(sound_path)
-        except:
-            raise Exception('Could not create sound object')
-
         if len(self.sounds) < 8:
-            self.sounds.append(new_sound)
+            self.sounds.append(sound_path)
             return True
         else:
             raise Exception('Maximum number of sounds per object exceeded')
@@ -42,7 +37,7 @@ class AudioManager:
     """
     def play_sound(self, sound_object):
         if sound_object in self.sounds:
-            current_sound = self.sounds.index(sound_object)
-            self.sounds[current_sound].play()
+            self.sound = Sound(sound_object)
+            self.sound.play()
         else:
             raise Exception('Sound Object is not a part of the list')
