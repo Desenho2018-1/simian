@@ -3,11 +3,11 @@ from simian.scene.base_scene import BaseScene
 
 class SceneManager(object):
 
-    current_scene = BaseScene()
+    current_scene = None
 
     scene_list = [current_scene]
 
-    def add_scene(self, *args): 
+    def add_scene(self, *args):
         # Check if scene already exists in list.
         for scene in list(args[0]):
             if issubclass(type(scene), BaseScene):
@@ -51,5 +51,5 @@ class SceneManager(object):
         for scene in self.scene_list:
             if(scene.name == scene_name):
                 return scene
-            else:
-                raise ValueError("This scene doesn't exist")
+
+        raise ValueError("This scene doesn't exist")
