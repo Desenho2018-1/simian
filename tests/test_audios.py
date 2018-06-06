@@ -11,6 +11,14 @@ class SoundTest(unittest.TestCase):
         sound = Sound('assets/audio/sound.wav')
         self.assertTrue(sound.play())
 
+    def test_should_not_play_sound(self):
+        try:
+            sound = Sound('doesnt_exist.wav')
+            sound.play()
+            self.assertTrue(False)
+        except:
+            self.assertTrue(True)
+
     def test_should_play_music(self):
         music = Music('assets/audio/music.mp3')
         self.assertTrue(music.play())
