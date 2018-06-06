@@ -56,3 +56,7 @@ class AudioManagerTest(unittest.TestCase):
             self.assertTrue(False)
         except:
             self.assertTrue(True)
+
+    def test_should_add_sound(self):
+        self.audio_manager = AudioManager()
+        self.assertTrue(self.audio_manager.add_sound('assets/audio/sound.wav'))

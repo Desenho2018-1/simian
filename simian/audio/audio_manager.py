@@ -31,7 +31,7 @@ class AudioManager:
         except:
             raise Exception('Could not create sound object')
 
-        if len(sounds) < 8:
+        if len(self.sounds) < 8:
             self.sounds.append(new_sound)
             return True
         else:
