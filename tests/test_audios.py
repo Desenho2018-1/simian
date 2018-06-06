@@ -51,6 +51,7 @@ class AudioManagerTest(unittest.TestCase):
 
     def test_should_not_play_music(self):
         self.audio_manager = AudioManager()
+
         try:
             self.audio_manager.play_music('doesnt_exist.mp3')
             self.assertTrue(False)
@@ -60,3 +61,13 @@ class AudioManagerTest(unittest.TestCase):
     def test_should_add_sound(self):
         self.audio_manager = AudioManager()
         self.assertTrue(self.audio_manager.add_sound('assets/audio/sound.wav'))
+
+    def test_should_play_sound(self):
+        self.audio_manager = AudioManager()
+        self.audio_manager.add_sound('assets/audio/sound.wav')
+
+        try:
+            self.audio_manager.play_sound('assets/audio/sound.wav')
+            self.assertTrue(True)
+        except:
+            self.assertTrue(False)
