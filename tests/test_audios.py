@@ -71,3 +71,12 @@ class AudioManagerTest(unittest.TestCase):
             self.assertTrue(True)
         except:
             self.assertTrue(False)
+
+    def test_should_not_play_sound(self):
+        self.audio_manager = AudioManager()
+
+        try:
+            self.audio_manager.play_sound('doesnt_exist')
+            self.assertTrue(False)
+        except:
+            self.assertTrue(True)
