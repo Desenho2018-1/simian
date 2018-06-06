@@ -7,13 +7,20 @@ class SoundTest(unittest.TestCase):
     def setUp(self):
         self.audio_manager = AudioManager()
 
-    def test_should create_sound(self):
+    def test_should_create_sound(self):
         try:
             sound = Sound('assets/audio/sound.wav')
             self.assertTrue(True)
         except:
             self.assertTrue(False)
-            
+
+    def test_should_not_create_sound(self):
+        try:
+            sound = Sound('doesnt_exist.wav')
+            self.assertTrue(False)
+        except:
+            self.assertTrue(True)
+
     def test_should_play_sound(self):
         sound = Sound('assets/audio/sound.wav')
         self.assertTrue(sound.play())
