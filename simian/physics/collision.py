@@ -43,7 +43,7 @@ def detect_collision(body_a, body_b):
     return minimal_push_vec
 
 
-def resolve_collision(body_a, body_b):
+def resolve_collision(body_a, body_b, normal):
     """
     Resolve the collision between
     two rigid bodies.
@@ -55,11 +55,14 @@ def resolve_collision(body_a, body_b):
         e = sqrt(body_a.restitution + body_b.restitution)
 
         scalar_impulse = -(1 * e) * relative_velocity_normal
-        scalar_impulse /= 1/body_a + 1/body_b
+        scalar_impulse /= 1/body_a.mass + 1/body_b.mass
 
-        impulse = scalar_impulse * normal
-        body_a.velocity -= 1/body_a.mass * impulse
-        body_b.velocity += 1/body_b.mass * impulse
+        impulse = normal * scalar_impulse
+
+        body_a.velocity -= impulse * (1/body_a.mass)
+        body_b.velocity += impulse * (1/body_b.mass)
+
+    return body_a, body_b
 
 
 def _centers_displacement(vertices1, vertices2):
