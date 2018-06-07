@@ -39,7 +39,7 @@ class Vec2(object):
             return Vec2(self.x + other[0], self.y + other[1])
         else:
             return Vec2(self.x + other, self.y + other)
-    
+
     def __sub__(self, other):
         if isinstance(other, Vec2):
             return Vec2(self.x - other.x, self.y - other.y)
@@ -55,6 +55,12 @@ class Vec2(object):
             return Vec2(self.x * other[0], self.y * other[1])
         else:
             return Vec2(self.x * other, self.y * other)
+
+    def __neg__(self):
+        return Vec2(-self.x, -self.y)
+
+    def __str__(self):
+        return f'Vec2({self.x, self.y})'
 
     def dot(self, other):
         return float(self.x * other[0] + self.y * other[1])
