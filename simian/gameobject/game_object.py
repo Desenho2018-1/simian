@@ -5,7 +5,7 @@ All objects in a game should be represented by this classes.
 from physics import space
 
 
-class GameObject:
+class GameObject(Object):
     """
     The base GameObject of Simian Engine. A game object has
     a position that defines his cordinates (x, y) in a 2D space,

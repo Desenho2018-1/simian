@@ -5,12 +5,9 @@ This class create base structure for
 creation scenes in games
 """
 
-import sys
-sys.path.append("../utils/exception")
+from simian.utils.exception.unimplemented_method import NotOverriddenMethod
 import pygame
-from unimplemented_method import NotOverriddenMethod
-class BaseScene(object):
-
+class BaseScene():
 
     def __init__(self, name="DEFAULT", id=0):
         self.name = name
