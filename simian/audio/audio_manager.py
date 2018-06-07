@@ -23,6 +23,24 @@ class AudioManager:
         return True
 
     """
+    Used to stop an already playing music
+    """
+    def stop_music(self):
+        if self.music != None:
+            self.music.stop()
+        else:
+            raise Exception('There is no music playing right now')
+
+    """
+    Used to fade out an already playing music
+    """
+    def fade_out_music(self, fade_out_time):
+        if self.music != None:
+            self.music.fade_out(fade_out_time)
+        else:
+            raise Exception('There is no music playing right now')
+
+    """
     Used to add a sound to a list of available sounds that can be used by pygame
     """
     def add_sound(self, sound_path):
@@ -40,4 +58,13 @@ class AudioManager:
             self.sound = Sound(sound_object)
             self.sound.play()
         else:
-            raise Exception('Sound Object is not a part of the list')
+            raise Exception('This sound is not a part of the list')
+
+    """
+    Used to stop an already playing sound
+    """
+    def stop_sound(self, sound_path):
+        if sound_path in self.sounds:
+            self.sound.stop()
+        else:
+            raise Exception('This sound is not a part of the list')
