@@ -6,14 +6,15 @@ creation scenes in games
 """
 
 from simian.utils.exception.unimplemented_method import NotOverriddenMethod
-import pygame
-class BaseScene():
+
+class BaseScene(object):
+
 
     def __init__(self, name="DEFAULT", id=0):
         self.name = name
         self.id = id
 
-    def draw(self, grafics):
+    def draw(self, graphics):
         raise NotOverriddenMethod("draw")
 
     def update(self, time_elapsed):

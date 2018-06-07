@@ -1,7 +1,7 @@
 
 """
 Exception throw, when a not implmenting methods
-that shuuld be overridde
+that should be overridde
 """
 
 class NotOverriddenMethod(Exception):
