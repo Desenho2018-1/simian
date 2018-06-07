@@ -68,3 +68,12 @@ class AudioManager:
             self.sound.stop()
         else:
             raise Exception('This sound is not a part of the list')
+
+    """
+    Used to fade out an already playing sound
+    """
+    def fade_out_sound(self, sound_path, fade_out_time):
+        if sound_path in self.sounds:
+            self.sound.fade_out(fade_out_time)
+        else:
+            raise Exception('This sound is not a part of the list')

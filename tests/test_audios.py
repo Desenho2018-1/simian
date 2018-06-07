@@ -119,3 +119,43 @@ class AudioManagerTest(unittest.TestCase):
             self.assertTrue(False)
         except:
             self.assertTrue(True)
+
+    def test_should_stop_sound(self):
+        self.audio_manager = AudioManager()
+        self.audio_manager.add_sound('assets/audio/sound.wav')
+        self.audio_manager.play_sound('assets/audio/sound.wav')
+
+        try:
+            self.audio_manager.stop_sound('assets/audio/sound.wav')
+            self.assertTrue(True)
+        except:
+            self.assertTrue(False)
+
+    def test_should_not_stop_sound(self):
+        self.audio_manager = AudioManager()
+
+        try:
+            self.audio_manager.fade_out_sound('assets/audio/sound.wav')
+            self.assertTrue(False)
+        except:
+            self.assertTrue(True)
+
+    def test_should_fade_out_sound(self):
+        self.audio_manager = AudioManager()
+        self.audio_manager.add_sound('assets/audio/sound.wav')
+        self.audio_manager.play_sound('assets/audio/sound.wav')
+
+        try:
+            self.audio_manager.fade_out_sound('assets/audio/sound.wav', 1)
+            self.assertTrue(False)
+        except:
+            self.assertTrue(True)
+
+    def test_should_not_fade_out_sound(self):
+        self.audio_manager = AudioManager()
+
+        try:
+            self.audio_manager.fade_out_sound('assets/audio/sound.wav', 1)
+            self.assertTrue(False)
+        except:
+            self.assertTrue(True)
