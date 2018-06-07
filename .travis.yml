@@ -1,22 +1,31 @@
 language: python
 
 python:
-  - 3.5
+- 3.5
 
 env:
   global:
   - CODECOV_TOKEN=eb7d0b33-d7f0-4c68-9e20-71efff8ca75e
 
 install:
-  - pip3 install -r requirements.txt
-  - pip3 install codecov
+- pip3 install -r requirements.txt
+- pip3 install codecov
 
 before_script:
-  - python3 setup.py build
-  - coverage run tests/
+- python3 setup.py build
+- coverage run tests/
 
 script:
-  - python3 -m pytest
+- python3 -m pytest
 
-  after_success:
-  - codecov
+after_success:
+- codecov
+
+deploy:
+  provider: pypi
+  user: alaxalves
+  password:
+    secure: A9BgjsRjxtIq1DrmHuhyk5euxsSUJlrvK4J9idC0aBZyaxpLE3uEM+TvlLKeDD/mJoV1aPQf2fqsJmRKvaWaXq08t2SFQuiopGVkVHnmCSNHmuhm/mIVKIRPQ/zhjFVUzvx7NYb6t0FwkUFgg+U12ZU31qug8l5Y+xqcA0vH6uQB+jxhCLkwFMSJZghiMi0bFpvoY+inLhytsmAnwHpvFvaFK6zUwd66QM87t4WoOC+T/jYzoXnuH0RaveFcO8Nlw/d4n0ajMQWz8uS41saA+UNQkticpbCmXC5DE5qmPljB9mjco9B7pzs0p7Ti0mmhJKvcqArk1ZA9PCv5d7vuWAfpodayWyCuD5XiRBSziMFJYle6+VR9DcxjdTlvZ5TMUTBAKpmfw6h2ILW6RxvX/Cqwvs+AbeDr/f2yJsedGj2mTANbZ8Ta7Viagbnes97U6ek+rpgoam51kb3/XnRFVi29ByZ0HiSCuD8AbchCQTHUBFyNaI2AZPlSz4MKwoRqbtZ3kBflr42h4ftWVlR+5yCE8YYuf+T9ivDS2AwWZ8eS23auuku6MSpDEAGZD1HYySUaZDUVpi687cJwyZAYa/npq58Y9aILkdyjju5iBtHkUrSBhHZgLe8ExefbSUxokvMcTxHv+4JnaBm5GbaDQh87Na0tGKxA4zShn0cdy6E=
+  on:
+    branch: master
+    
