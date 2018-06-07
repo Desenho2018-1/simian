@@ -4,8 +4,7 @@ python:
   - 3.5
 
 install:
-  - pip3 install pygame
-  - pip3 install pytest
+  - pip3 install -r requirements.txt
 
 before_script:
   - python3 setup.py build
