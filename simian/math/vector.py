@@ -40,6 +40,18 @@ class Vec2(object):
         else:
             return Vec2(self.x + other, self.y + other)
 
+    def __iadd__(self, other):
+        if isinstance(other, Vec2):
+            self.x += other.x
+            self.y += other.y
+        elif hasattr(other, "__getitem__"):
+            self.x += other[0]
+            self.y += other[1]
+        else:
+            self.x += other
+            self.y += other
+        return self
+
     def __sub__(self, other):
         if isinstance(other, Vec2):
             return Vec2(self.x - other.x, self.y - other.y)
@@ -47,6 +59,18 @@ class Vec2(object):
             return Vec2(self.x - other[0], self.y - other[1])
         else:
             return Vec2(self.x - other, self.y - other)
+
+    def __isub__(self, other):
+        if isinstance(other, Vec2):
+            self.x -= other.x
+            self.y -= other.y
+        elif (hasattr(other, "__getitem__")):
+            self.x -= other[0]
+            self.y -= other[1]
+        else:
+            self.x -= other
+            self.y -= other
+        return self
 
     def __mul__(self, other):
         if isinstance(other, Vec2):
