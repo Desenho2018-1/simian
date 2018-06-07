@@ -1,23 +1,21 @@
 from simian.scene.base_scene import BaseScene
+from simian.utils.singleton import Singleton
 
-
-class SceneManager(object):
+class SceneManager(metaclass=Singleton):
 
     def __init__(self):
-        self.current_scene = BaseScene()
+        self.current_scene = None
 
-        self.scene_list = [self.current_scene]
-
-        pass
+        self.scene_list = []
 
     def add_scene(self, *args):
         # Check if scene already exists in list.
-        for scene in list(args):
+        for scene in list(args[0]):
 
             if issubclass(type(scene), BaseScene):
                 on_list = self.is_scene_on_list(scene.name)
                 # If it isn't, append it in list.
-                if(not on_list):
+                if(scene is not on_list):
                     self.scene_list.append(scene)
 
                 else:

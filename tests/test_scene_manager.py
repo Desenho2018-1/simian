@@ -6,7 +6,7 @@ from simian.scene.base_scene import BaseScene
 class SceneManagerTest(unittest.TestCase):
 
     def setUp(self):
-        self.scene = BaseScene('dummy')
+        self.scene = BaseScene('dummy',1)
         self.scene_manager = SceneManager()
 
     def tearDown(self):
@@ -16,7 +16,7 @@ class SceneManagerTest(unittest.TestCase):
     def test_add_scene(self):
         self.scene_manager.add_scene(self.scene)
         inserted_scene = self.scene_manager.scene_list.pop()
-        
+
         self.assertEqual(self.scene, inserted_scene)
 
     def test_add_scene_that_is_already_in_list(self):
@@ -32,14 +32,14 @@ class SceneManagerTest(unittest.TestCase):
         self.scene_manager.add_scene(self.scene)
         self.scene_manager.load_scene('dummy')
         self.scene_manager.remove_scene('dummy')
-        self.assertRaises(ValueError, self.scene_manager.find_scene, 'dummy')        
-        
+        self.assertRaises(ValueError, self.scene_manager.find_scene, 'dummy')
+
     def test_remove_scene_that_doesnt_exist(self):
         self.assertRaises(ValueError, self.scene_manager.remove_scene, 'dummy')
 
     def test_load_next_scene(self):
         next_scene = BaseScene('dummy_two')
-        
+
         self.scene_manager.add_scene(self.scene)
         self.scene_manager.add_scene(next_scene)
 
@@ -53,14 +53,14 @@ class SceneManagerTest(unittest.TestCase):
         self.scene_manager.add_scene(self.scene)
         self.scene_manager.load_next_scene()
 
-        self.assertRaises(ValueError, self.scene_manager.load_next_scene)                
+        self.assertRaises(ValueError, self.scene_manager.load_next_scene)
 
     def test_load_unexistent_next_scene(self):
         with self.assertRaises(ValueError) as error:
             self.scene_manager.load_next_scene()
         exception = str(error.exception)
         self.assertEqual(exception, "The current scene is the last scene")
-    
+
     def test_load_scene(self):
         self.scene_manager.add_scene(self.scene)
         self.scene_manager.load_scene('dummy')
