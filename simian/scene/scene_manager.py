@@ -1,11 +1,12 @@
 from simian.scene.base_scene import BaseScene
+from simian.utils.singleton import Singleton
 
 
-class SceneManager(object):
+class SceneManager(metaclass=Singleton):
 
     current_scene = None
 
-    scene_list = [current_scene]
+    scene_list = []
 
     def add_scene(self, *args):
         # Check if scene already exists in list.
@@ -33,10 +34,11 @@ class SceneManager(object):
 
     def load_scene(self, scene_name):
         scene = self.find_scene(scene_name)
-
         if(scene is not None):
+            print("rola ia ser bom")
             self.current_scene = scene
             self.current_scene.load()
+            print(self.current_scene.name)
         else:
             raise ValueError("This scene does not exist")
 
