@@ -12,13 +12,11 @@ class SceneManager(metaclass=Singleton):
     def add_scene(self, *args):
         # Check if scene already exists in list.
         for scene in list(args[0]):
-
             if issubclass(type(scene), BaseScene):
                 on_list = self.is_scene_on_list(scene.name)
                 # If it isn't, append it in list.
-                if(scene is not on_list):
+                if(not on_list):
                     self.scene_list.append(scene)
-
                 else:
                     raise ValueError(
                         "This scene [" + scene.name + "] already exists")
