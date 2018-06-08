@@ -16,7 +16,7 @@ class TextObject(object):
         self.text_is_str(self.text_message)
         self.size = size
         self.font_text = font_text
-        self.font_object = None
+        self.font_object = pygame.font.SysFont(self.font_text, self.size)
 
     def text_is_str(self,message):
         if(type(message) != str):
@@ -24,10 +24,6 @@ class TextObject(object):
         else:
             #Nothing to do
             pass
-
-    def set_text_font(self):
-        self.font_object =  pygame.font.SysFont(self.font_text, self.size)
-
 
     def draw_text(self,soft_edges,color):
         return self.font_object.render(self.text_message, soft_edges, color)
