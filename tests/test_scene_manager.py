@@ -38,10 +38,10 @@ class SceneManagerTest(unittest.TestCase):
         self.assertRaises(ValueError, self.scene_manager.remove_scene, 'dummy')
 
     def test_load_next_scene(self):
-        next_scene = BaseScene('dummy_two')
+        next_scene = TemplateScene('dummy_two',2)
 
-        self.scene_manager.add_scene(self.scene)
-        self.scene_manager.add_scene(next_scene)
+        self.scene_manager.add_scene(self.scenes)
+        self.scene_manager.add_scene((next_scene,))
 
         self.scene_manager.current_scene = self.scene
 
