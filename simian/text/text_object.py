@@ -24,6 +24,7 @@ class TextObject(object):
         else:
             #Nothing to do
             pass
+
     def set_text_font(self):
         self.font_object =  pygame.font.SysFont(self.font_text, self.size)
 
@@ -33,7 +34,7 @@ class TextObject(object):
         """
             Return all font available on the user machine
         """
-        
+
     def available_fonts_on_machine(self):
         all_fonts = pygame.font.get_fonts()
         for font in all_fonts:
@@ -69,7 +70,3 @@ class TextObject(object):
 
     def check_underline(self):
         self.font_object.get_underline()
-
-
-a = TextObject("as",12,"")
-print(type(a.text_message))
