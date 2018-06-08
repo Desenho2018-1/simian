@@ -1,10 +1,12 @@
 __all__ = [
     'audio',
-    'sprite',
-    'game_object',
+    'graphics',
+    'object',
     'scene',
     'input',
     'text',
-    'window',
-    'physics'
+    'canvas',
+    'physics',
+    'math',
+    'engine'
 ]

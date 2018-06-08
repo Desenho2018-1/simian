@@ -16,6 +16,7 @@ class GameCanvas(metaclass=Singleton):
     def __init__(self, name='Game made with Simian', size=(800, 600)):
         self.size = size
         self.name = name
+        self.screen = None
 
     def open(self):
         """
@@ -25,6 +26,12 @@ class GameCanvas(metaclass=Singleton):
         screen = pygame.display.set_mode(size)
         pygame.display.set_caption(self.name)
         pygame.display.flip()
+
+    def get_screen(self):
+        """
+        Return the canvas surface.
+        """
+        return self.screen
 
     def close(self):
         """

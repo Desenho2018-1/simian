@@ -1,7 +1,8 @@
-
 from simian.scene.base_scene import BaseScene
-from simian.utils.exception.unimplemented_method import NotOverriddenMethod
+from simian.exceptions.unimplemented_method import NotOverriddenMethod
 import unittest
+
+
 class BaseSceneTest(unittest.TestCase):
 
     def setUp(self):
