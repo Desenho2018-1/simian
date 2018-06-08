@@ -4,12 +4,9 @@ All renderable objects must use this class
 to render.
 """
 import pygame
-import sys
-sys.path.append("../physics")
-sys.path.append("../utils/")
 
-from space import Size
-from singleton import Singleton
+from simian.physics.space import Size
+from simian.utils.singleton import Singleton
 
 
 class GameCanvas(metaclass=Singleton):
@@ -18,7 +15,7 @@ class GameCanvas(metaclass=Singleton):
     (windows where every renderable object must be rendered)
     """
 
-    def __init__(self, size=None, name='Simian Engine',width=800, height=600):
+    def __init__(self, size=None, name='Game made with Simian',width=800, height=600):
         self.size = size if size else Size(width, height)
         self.name = name
 
@@ -32,7 +29,11 @@ class GameCanvas(metaclass=Singleton):
         """
         Keep the screen open, when on while True
         """
+        self.refresh_screen()
+    
+    def refresh_screen(self):
         pygame.display.flip()
+
 
     def close(self):
         """

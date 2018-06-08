@@ -1,5 +1,4 @@
 
-
 """
 This class create base structure for
 creation scenes in games
@@ -14,7 +13,7 @@ class BaseScene(object):
         self.name = name
         self.id = id
 
-    def draw(self, grafics):
+    def draw(self, graphics):
         raise NotOverriddenMethod("draw")
 
     def update(self, time_elapsed):
