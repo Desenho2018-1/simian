@@ -13,7 +13,7 @@ class GameCanvas(metaclass=Singleton):
     This class manages game canvas
     (windows where every renderable object must be rendered)
     """
-    def __init__(self, size=(800, 600), name='Game made with Simian'):
+    def __init__(self, name='Game made with Simian', size=(800, 600)):
         self.size = size
         self.name = name
 

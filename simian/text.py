@@ -3,7 +3,7 @@ Classes that provide methods for display
 and manage texts on screens.
 """
 
-from pygame.font import SysFont, get_default_font
+import pygame
 
 
 class Text:
@@ -15,7 +15,7 @@ class Text:
     def __init__(self, content, size, font='default'):
         self.content = content
         self.size = size
-        self._font = SysFont(font, size)
+        self._font = pygame.SysFont(font, size)
         self._styles = {'underline': False, 'bold': False, 'italic': False}
 
     @property
