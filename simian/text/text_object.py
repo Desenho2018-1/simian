@@ -31,11 +31,13 @@ class TextObject(object):
 
     def draw_text(self,soft_edges,color):
         return self.font_object.render(self.text_message, soft_edges, color)
+
+    def available_fonts_on_machine(self):
+
         """
             Return all font available on the user machine
         """
 
-    def available_fonts_on_machine(self):
         all_fonts = pygame.font.get_fonts()
         for font in all_fonts:
             print(font)
