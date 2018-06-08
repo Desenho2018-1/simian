@@ -14,10 +14,10 @@ class GameObject(object):
     """
     __slots__ = ['position']
 
-    def __init__(self, x=None, y=None):
+    def __init__(self, x=0, y=0):
         self.position = Vec2(x, y)
 
-    def update(self):
+    def update(self, time_elapsed):
         """
         This method is called every frame of the game loop.
         All the logic that changes something in a game object goes here.
@@ -29,7 +29,7 @@ class GameObject(object):
         """
         pass
 
-    def draw(self, renderable_object):
+    def draw(self, graphics):
         """
         This method is called every frame of the game loop.
         Draw the renderable object in the position of this game object.

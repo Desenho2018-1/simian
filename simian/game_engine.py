@@ -37,7 +37,7 @@ class GameEngine(metaclass=Singleton):
                 if event.type == pygame.QUIT:
                     exit()
 
-            self.scene_manager.current_scene.update(clock.get_time())
+            self.scene_manager.current_scene.update(clock.get_time()/1000)
             
             groups = pygame.sprite.OrderedUpdates()
             self.scene_manager.current_scene.draw(groups)
