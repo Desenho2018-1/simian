@@ -1,5 +1,4 @@
-
-from base_scene import BaseScene
+from simian.scene.base_scene import BaseScene
 
 class TestScene(BaseScene):
 
