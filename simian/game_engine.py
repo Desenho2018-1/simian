@@ -13,9 +13,8 @@ NUMBER_OF_FRAMES = 60
 
 class GameEngine(metaclass=Singleton):
 
-    def load(self):
-        game_window_size = Size(GAME_WINDOW_WIDTH, GAME_WINDOW_HEIGHT)
-        self.game_canvas = GameCanvas(game_window_size, GAME_NAME)
+    def load(self, game_name, width, height):
+        self.game_canvas = GameCanvas(Size(width, height), game_name)
         self.scene_manager = SceneManager()
         self.keyboard = Keyboard()
 
