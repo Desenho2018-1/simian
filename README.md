@@ -4,8 +4,8 @@ A simple 2D game engine implemented with python, using pygame!
 
 ## Especification
 
-Python: v3.6.5
-pygame: v1.9.3
+- Python v3.6.5
+- pygame v1.9.3
 
 ## How to setup your environment to contribute to this project
 
@@ -19,11 +19,26 @@ pygame: v1.9.3
 
 `$ source venv/games/bin/activate`
 
-
 2. Then go to our simian folder (where you can see setup.py):
 
 `(games) $ python3 setup.py build`
 
-**To quit this virtual environment just type:**
+-----------------------------------------
+You can also use:
+
+```
+$ docker-compose -f docker/docker-compose.yml up --build -d 
+$ docker exec -it simian bash`
+```
+
+or even more simple:
+
+`$ make run`
+
+And you'll be inside the simian environment!
+
+-------------------------------------------
+
+_**To quit this virtual environment just type:**_
 
 `$ deactivate`

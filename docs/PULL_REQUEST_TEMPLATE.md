@@ -1,10 +1,8 @@
 # Descrição
 
-
 # Issue Relacionada
 
 #
-
 
 # Tipo de Mudanças
 
