@@ -10,7 +10,7 @@ from simian.math.vector import Vec2
 class BoxCollider(object):
     """
     A box that represents the shape
-    of a rigid body, is used to perfofm
+    of a rigid body, is used to perform
     AABB collision detection.
     """
     __slots__ = ['position', 'size', 'vertices', 'edges']
@@ -39,8 +39,8 @@ class BoxCollider(object):
     def _get_edges(self):
         """
         Return the vectors that represent
-        all edges of a polygon with the given
-        vertices.
+        all edges of the box collider with
+        the given vertices.
         """
         edges = []
         N = len(self.vertices)

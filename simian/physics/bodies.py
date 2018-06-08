@@ -15,7 +15,7 @@ class RigidBody(GameObject):
     a force applied at a point of his body and
     a restitution coefficient.
     """
-    __slots__ = ['mass', 'velocity', 'force', 'restitution', 'collider']
+    __slots__ = ['mass', 'velocity', 'restitution', 'collider']
 
     def __init__(self, position, mass, collider, restitution=0,
                  velocity=None, force=None):
@@ -24,7 +24,6 @@ class RigidBody(GameObject):
         self.collider = collider
         self.restitution = restitution
         self.velocity = velocity if velocity is not None else Vec2(0, 0)
-        self.force = force if force is not None else Vec2(0, 0)
 
     def apply_impulse(self, impulse):
         """
