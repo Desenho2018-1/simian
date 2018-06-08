@@ -26,7 +26,10 @@ A simple 2D game engine implemented with python, using pygame!
 -----------------------------------------
 You can also use:
 
-`$ docker-compose up -d && docker exec -it simian bash`
+```
+$ docker-compose -f docker/docker-compose.yml up --build -d 
+$ docker exec -it simian bash`
+```
 
 or even more simple:
 
