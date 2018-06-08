@@ -13,8 +13,9 @@ class TextObjectTest(unittest.TestCase):
          self.font_object_none = self.text_object.font_object
 
          """Instance for methods display"""
-
-         #self.text_object.font_object.draw_text(True,(255,0,0))
+        self.text_object.font_object.set_bold(True)
+        self.text_object.font_object.set_underline(True)
+        self.text_object.font_object.set_italic(True)
 
 
      def tearDown(self):
@@ -35,25 +36,23 @@ class TextObjectTest(unittest.TestCase):
 
     def test_font_object(self):
          font_object = self.font_object_none
-         
+
     """
         Test methods for custom tezt
     """
      def test_is_bold_text(self):
-        test = self.text_object.font_object.set_bold(True)
         is_bold = self.text_object.font_object.get_bold()
         self.assertEqual(is_bold, True)
 
      def test_is_underline_text(self):
-        test = self.text_object.font_object.set_underline(True)
         is_underline = self.text_object.font_object.get_underline()
         self.assertEqual(is_underline, True)
 
      def test_is_italic_text(self):
-        test = self.text_object.font_object.set_italic(True)
         is_italic = self.text_object.font_object.get_italic()
         self.assertEqual(is_italic, True)
 
+     
 
 
 if __name__ == '__main__':
