@@ -1,29 +1,42 @@
-## Simian
+=====
+Simian
+=====
 
-A simple 2D game engine implemented with python, using pygame!
+Simian is a framework thats provides a game engine using pygame.
 
-## Especification
+=====
+Especification
+=====
 
 Python: v3.6.5
 pygame: v1.9.3
 
-## How to setup your environment to contribute to this project
+Quick Start
+-----------
 
-1. Follow these steps on a terminal:
+1. Follow these steps on a terminal::
 
-`$ sudo apt-get install python-virtualenv`
+    $ sudo apt-get install python-virtualenv
 
-`$ mkdir venv`
+    $ mkdir venv
 
-`$ virtualenv venv/games`
+    $ virtualenv venv/games
 
-`$ source venv/games/bin/activate`
+    $ source venv/games/bin/activate
 
 
-2. Then go to our simian folder (where you can see setup.py):
+2. Then go to the project's root::
 
-`(games) $ python3 setup.py build`
+    (games) $ python3 setup.py build
+
+3. After that your can use either docker/makefile abstraction to run your simian environment
 
 **To quit this virtual environment just type:**
 
 `$ deactivate`
+
+=====
+PyPI
+=====
+
+A more stable version of the package is in: https://pypi.org/project/simian-engine/
