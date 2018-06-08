@@ -1,6 +1,7 @@
 from simian.scene.base_scene import BaseScene
 from simian.utils.singleton import Singleton
 
+
 class SceneManager(metaclass=Singleton):
 
     def __init__(self):
