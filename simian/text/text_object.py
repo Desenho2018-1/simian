@@ -10,7 +10,7 @@ class TextObject(object):
         on screen and scene
     """
 
-    def __init__(self,text_message="default",size=0,font_text="arial"):
+    def __init__(self,text_message="default",size=0,font_text="Arial"):
 
         self.text_message = text_message
         self.text_is_str(self.text_message)
