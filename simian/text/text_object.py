@@ -2,7 +2,7 @@ import pygame
 
 from simian.utils.exception.text_exception import TextException
 
-class TextObject(Object):
+class TextObject(object):
 
     """
         This class provide, methods
@@ -10,28 +10,30 @@ class TextObject(Object):
         on screen and scene
     """
 
-    def __init__(self,text_message,size,font_text):
+    def __init__(self,text_message="default",size=0,font_text="arial"):
 
         self.text_message = text_message
+        self.text_is_str(self.text_message)
         self.size = size
         self.font_text = font_text
         self.font_object = None
 
-    def text_is_str(message):
+    def text_is_str(self,message):
         if(type(message) != str):
             raise TextException()
-
-
+        else:
+            #Nothing to do
+            pass
     def set_text_font(self):
         self.font_object =  pygame.font.SysFont(self.font_text, self.size)
 
 
     def draw_text(self,soft_edges,color):
         return self.font_object.render(self.text_message, soft_edges, color)
-
         """
             Return all font available on the user machine
         """
+        
     def available_fonts_on_machine(self):
         all_fonts = pygame.font.get_fonts()
         for font in all_fonts:
@@ -42,25 +44,32 @@ class TextObject(Object):
     """
     def is_bold(self,boolean):
         """ default is false """
-            self.font_object.set_bold(boolean)
+        self.font_object.set_bold(boolean)
 
     def is_italic(self,boolean):
         """ default is false """
-            self.font_object.set_italic(boolean)
+        self.font_object.set_italic(boolean)
 
 
     def is_underline(self, boolen):
         """ default is false """
-            self.font_object.set_underline(boolen)
+        self.font_object.set_underline(boolen)
 
     """
         Methods for check if custom text is display
     """
+
     def check_bold(self):
         self.font_object.get_bold()
+
 
     def check_italic(self):
         self.font_object.get_italic()
 
+
     def check_underline(self):
         self.font_object.get_underline()
+
+
+a = TextObject("as",12,"")
+print(type(a.text_message))
