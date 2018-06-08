@@ -36,7 +36,7 @@ class GameEngine(metaclass=Singleton):
                     exit()
 
             self.scene_manager.current_scene.update(clock.get_time())
-            
+            self.scene_manager.current_scene.draw(None)
             # Refresh screen
             self.game_canvas.refresh_screen()
 
