@@ -1,25 +1,34 @@
+sudo: required
+
 language: python
 
 python:
-- 3.5
+	- 3.5
+
+services:
+	- docker
 
 env:
   global:
   - CODECOV_TOKEN=eb7d0b33-d7f0-4c68-9e20-71efff8ca75e
+  - secure: jBotWnjvJ4hVabO21QWiXEKJOnSdmn0EujSu91qo77mfB2VQ+PHm7OaNGKVl67MS3HKkQjFloFp113fyvoC2WmqllZILhO2d6k45bS+4vE2llQd7K6ai9YILRT4/3fUPEpppHyUJVU0UEacE7jokfwAHptXt00NBhlIHJMXa15yYf+wW/DlvrYBLX00wqdmuT/cjwxgYySvi4HpkaNae7RuRMLScIsQLYi3OXTPuPVlSppkje905XMmQBpWwBm1HkPSBzTSmj9nadTxuhJxfKSuzNgPXk6AZfSyRXJ1ROTWgJVGUkRh8CCliX+9Z6yXTI8JtlCQfjrxhs3TkG3QjhFYggg2Db0X312t6xznxVWkAogXgQoy1VTV4blmUYXPFNEkgEHFNwUNb72IRRtCuYLAoXuzNWbTNsDBATOtQYNMtdfsjXWhBxL/BLcPdl9F+hCUXISJdNin3iQK3NSPKR6j7JpnqiEHEm1XKPcos9xOu1GEJBQ7Ub3vq/A0Y9Koha3xXIs5estd8W6x4k5caqfQqSMzIK5z5jJFCDL5giOvFnflAmdbp99FFdr7qZMHcf8aPCd0MkfGqtSnRNpjOMWdA0XhSs123MIHq+Q94ACLXRb/k2I6d+VtIYt7D4FS35ktQgli5D08kUclXlxsCSiejNKrN+YV+AZYUdIpwaKc= #DOCKER_EMAIL
+  - secure: H4ozTvQU9mq53/8FKRUlLTnuEZy6irNe/BKCupsEVVUsnhXBvdAY7TBSum+vgdBDgcZmXRUg2vD5c03AW7g3p2rbvI7QXBWlaHJRJQ2Ia/y1fkhV3kghTGASWZLFt0qLvxlpgTggfFl0aiV06aKLgFHm3eijWfvr2kF2uYfJ6mEPdYgG6P0PUXJDpcwot9txcDmozW2yoZe8GbzhjngZudqxWWVlzY+aZDJzzcojMrhrR/RurwtdYjCAMycFHS/JGP2a7tEbsCFW4Yi0iP7drUMgtfpViAeq+Drn+/KynYeMJaoVuweO0/KkFXIN1JxiCfSRpzs92y8esS7RNkK+NkmFn0qZ/q4wzeSpqDXi3wqLQVokRUmojwlSKj82IE84X9fqMREAtrHtw8XAYuabfVBPKZdG4KSFl3oOjYIDp7X8oLil+Jn9BBLxzSZcB/mwGtSfdCExIq+XmP/msHYoNxn23HUDfmADxCWZcLwiaHR/s4irOagwKyhn/L0tugn1H/k/nhvPdD/1VzUTmiZ8HqTytQZqCmpn96/rOu/nsNdnvjN7oxE94+1Bd5FdEL1HYhoeRX9U68zZQo8ZEQpVs6GsQCU4fMYZBP1cWcvGm0TVgXUo3d/WP+ElRCzLUt9KatKeWim0AGF1ax7PP5KYvUtpTyfWrpgqNHvKjp1aIYk= #DOCKER_USERNAME
+  - secure: ByMFGg70bJ23aoJlt/NFqeGoddkXGK66kwqtuIK+FJGSglqPM4QbgrUr8d1Cz+bltQhnLeHZ4/ahmCjh93rfeowqcoiwyRXgkJ/tj3aARGAZLL99vZqxnelx3g2DEtJ/VinqYw/MNZ7WRZTa5EaLR6D+fsIKQJQO46w4G9I3Ivzck/hTKoFbE6hv5Jua2gtvtlM/MEMblS+gQU7m8wrXWM1zqjTBP7MR82lm+JTqXFoYAHIvOYPDQzv11VH0lR1NRbYi2//V7lig2Ro4vHs4JWCHHOlyiM4cq/RCbmxwKdY7uJej927xSmseUt5BLCkGFnWzDqkMxIPDoP5QPWU/eMmIFCbSA32H5XgW4zF+gjI7mR6pH0/wzfwVuhCtN/YksuXsbvNJa90EEFsXBS5fdQtDQmRr7WF/YtwudJG1eryiyzNbsC07//NRS9WChrXWqPzvCTwjyeNcY1fvEvUZWWUNajWX25U17iYPHp7sKbcn/vL1IeI1r9d95EZK1HlCAigEO186nm2Wx8QXVhaviE27LjxlYpD6/Y8+qBGoSCEj9YRP5B3gX8v2HldZsoTilgah/aeRCmAIb+ZQ2cbKRLYPiBwbgvsBWsy9An6vYVYFCuQObbEf/tm5sGARpnpAVeQ/q2H/bwV7wsR7nJGVv1uVx7WagmEFZMhRWqibH0o= #DOCKER_PASSWORD
 
 install:
-- pip3 install -r requirements.txt
-- pip3 install codecov
+	- pip3 install -r requirements.txt
+	- pip3 install codecov
 
 before_script:
-- python3 setup.py build
+	- python3 setup.py build
 
 script:
-- python3 -m pytest
-- coverage run tests/
+	- python3 -m pytest
+	- coverage run tests/
 
 after_success:
-- codecov
+	- codecov
+	- ./docker-deploy.sh
 
 deploy:
   provider: pypi
@@ -29,4 +38,4 @@ deploy:
   on:
     branch: master
     python: 3.5
-    
+
