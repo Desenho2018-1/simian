@@ -2,19 +2,20 @@
 GameObject classes.
 All objects in a game should be represented by this classes.
 """
-from physics import space
+
+from simian.math.vector import Vec2
 
 
-class GameObject(Object):
+class GameObject(object):
     """
     The base GameObject of Simian Engine. A game object has
-    a position that defines his cordinates (x, y) in a 2D space,
-    also has a size (height, width) that defines how big the object is.
+    a position that defines his cordinates (x, y) in a 2D space
+    and also has a draw and a update method.
     """
+    __slots__ = ['position']
 
-    def __init__(self, x=None, y=None, height=None, width=None):
-        self.pos = space.Position(x, y)
-        self.size = space.Size(height, width)
+    def __init__(self, x=None, y=None):
+        self.position = Vec2(x, y)
 
     def update(self):
         """
