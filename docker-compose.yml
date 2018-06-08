@@ -9,6 +9,8 @@ services:
     command: /bin/bash
     networks: 
       - simian
+    volumes:
+      - .:/home/simian
 
 networks: 
   simian:

@@ -3,9 +3,15 @@ build:
 	@docker build -f Dockerfile -t simian .
 	@echo "\nDONE\n"	
 
-run:
-	@echo "\nRunning Simian environment..."
+exec:
+	@echo "\nExecuting your Simian environment..."
 	@docker-compose -f docker-compose.yml up -d
+	@docker exec -it simian /bin/bash
+	@echo "\nDONE\n"
+
+run:
+	@echo "\nRunning/Re-mounting your Simian environment..."
+	@docker-compose -f docker-compose.yml up --build -d
 	@docker exec -it simian /bin/bash
 	@echo "\nDONE\n"
 
