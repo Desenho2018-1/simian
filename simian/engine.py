@@ -11,6 +11,9 @@ from simian.scene.scene_manager import SceneManager
 from simian.input.keyboard_manager import Keyboard
 
 
+NUMBER_OF_FRAMES = 60
+
+
 class GameEngine(metaclass=Singleton):
     """
     Class that wraps the mainloop
@@ -61,7 +64,7 @@ class GameEngine(metaclass=Singleton):
             groups.draw(self.screen)
             
             # Refresh screen
-            self.game_canvas.refresh_screen()
+            self.game_canvas.refresh()
 
             # Set the number of frames per second
             clock.tick(NUMBER_OF_FRAMES)

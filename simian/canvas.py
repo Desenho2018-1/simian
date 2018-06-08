@@ -23,9 +23,12 @@ class GameCanvas(metaclass=Singleton):
         Open a window to draw all elements
         of the game.
         """
-        screen = pygame.display.set_mode(size)
+        self.screen = pygame.display.set_mode(self.size)
         pygame.display.set_caption(self.name)
+
+    def refresh(self):
         pygame.display.flip()
+        self.screen.fill((0,0,0))
 
     def get_screen(self):
         """

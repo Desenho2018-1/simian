@@ -1,9 +1,9 @@
-from simian.game_engine import GameEngine
-from template_game.template_scene import TemplateScene
+from simian.engine import GameEngine
+from examples.template_scene import TemplateScene
 
 engine = GameEngine()
 
-engine.load("Template Game", 800, 600)
+engine.load("Template Game", (800, 600))
 
 scene1 = TemplateScene("Fase1", 0)
 scene2 = TemplateScene("Fase2", 1)
