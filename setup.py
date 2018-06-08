@@ -1,8 +1,13 @@
 from setuptools import setup, find_packages
-from codecs import open
+from pip.req import parse_requirements
+import codecs
 from os import path
+import os
 
 here = path.abspath(path.dirname(__file__))
+
+with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
+    README = readme.read()
 
 CLASSIFIERS= [
     "Development Status :: 5 - Production/Stable",
@@ -17,20 +22,14 @@ CLASSIFIERS= [
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 
-META_FILE = read(META_PATH)
+# allow setup.py to be run from any path
+os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
-def read(*parts):
-    with codecs.open(os.path.join(HERE, *parts), "rb", "utf-8") as f:
-        return f.read()
+# parse_requirements() returns generator of pip.req.InstallRequirement objects
+INSTALL_REQS = parse_requirements('requirements.txt', session='hack')
 
-def find_meta(meta):
-    meta_match = re.search(
-        r"^__{meta}__ = ['\"]([^'\"]*)['\"]".format(meta=meta),
-        META_FILE, re.M
-    )
-    if meta_match:
-        return meta_match.group(1)
-    raise RuntimeError("Unable to find __{meta}__ string.".format(meta=meta))
+# reqs is a list of requirement
+REQUIRES = [str(ir.req) for ir in INSTALL_REQS]
 
 setup(
     name='simian_engine',
@@ -39,11 +38,13 @@ setup(
 
     description='A simple 2D game engine implemented with python!',
 
+    long_description=codecs.open('README.rst', 'rb', 'utf8').read(),
+
     url='https://github.com/Desenho2018-1/simian',
 
     packages=find_packages(exclude=['contrib', 'docs', 'tests', 'simian']),
 
-    install_requires=['pygame==1.9.3'],
+    install_requires=REQUIRES,
 
     entry_points={
         'console_scripts': [
@@ -53,15 +54,17 @@ setup(
 
     classifiers=CLASSIFIERS,
 
-    license=find_meta('license'),
+    license='MIT',
 
-    keywords='',
+    keywords=['game', 'engine', 'simian'],
 
-    author='',
+    author='Simian',
 
-    author_email='',
+    author_email='simiangameengine@gmail.com',
 
-    maintainer='',
+    maintainer='Simian',
 
-    maintainer_email='',
+    maintainer_email='simiangameengine@gmail.com',
+
+     platforms='any',
 )
