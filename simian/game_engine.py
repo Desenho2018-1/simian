@@ -35,10 +35,9 @@ class GameEngine(metaclass=Singleton):
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     exit()
-                else:
-                    # Update Actual Game Scene
-                    self.scene_manager.current_scene.update(1)
 
+            self.scene_manager.current_scene.update(clock.get_time())
+            
             # Refresh screen
             self.game_canvas.refresh_screen()
 
