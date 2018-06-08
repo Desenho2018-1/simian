@@ -1,12 +1,28 @@
 build:
 	@echo "\nBuilding your Simian environment..."
-	@docker build -f Dockerfile -t simian .
+	@docker build -f docker/Dockerfile -t simian .
 	@echo "\nDONE\n"	
 
-run:
-	@echo "\nRunning Simian environment..."
-	@docker-compose -f docker-compose.yml up -d
+exec:
+	@echo "\nExecuting your Simian environment..."
+	@docker-compose -f docker/docker-compose.yml up -d
 	@docker exec -it simian /bin/bash
+	@echo "\nDONE\n"
+
+run:
+	@echo "\nRunning/Re-mounting your Simian environment..."
+	@docker-compose -f docker/docker-compose.yml up --build -d
+	@docker exec -it simian /bin/bash
+	@echo "\nDONE\n"
+
+test:
+	@echo "\nRunning Simian tests..."
+	@docker exec -it simian /bin/bash -c "python3 -m pytest"
+	@echo "\nDONE\n"
+
+install:
+	@echo "\nInstalling Simian dependencies..."
+	@docker exec -it simian /bin/bash -c "pip3 install -r requirements.txt"
 	@echo "\nDONE\n"
 
 rm:
