@@ -1,15 +1,18 @@
 import pygame
 
+
+class TextObject(Object):
+
     """
         This class provide, methods
         for display and to menage texts
         on screen and scene
     """
 
-class TextObject(Object):
-
     def __init__(self,text_message,size,font_text):
-        self.text_message = text_message
+        try:
+            self.text_message = text_message
+        catch:
         self.size = size
         self.font_text = font_text
         self.font_object = None
@@ -42,10 +45,8 @@ class TextObject(Object):
 
 
     def is_underline(self, boolen):
-
         """ default is false """
             self.font_object.set_underline(boolen)
-
 
     """
         Methods for check if custom text is display
