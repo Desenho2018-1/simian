@@ -1,0 +1,18 @@
+version: '3.5'
+services:
+
+  app:
+    container_name: simian
+    build: .
+    stdin_open: true
+    tty: true
+    command: /bin/bash
+    networks: 
+      - simian
+    volumes:
+      - .:/home/simian
+
+networks: 
+  simian:
+    name: simian-network
+    

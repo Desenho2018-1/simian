@@ -1,5 +1,4 @@
 
-
 """
 This class create base structure for
 creation scenes in games
