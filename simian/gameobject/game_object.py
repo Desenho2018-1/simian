@@ -6,7 +6,7 @@ All objects in a game should be represented by this classes.
 from simian.math.vector import Vec2
 
 
-class GameObject(object):
+class GameObject:
     """
     The base GameObject of Simian Engine. A game object has
     a position that defines his cordinates (x, y) in a 2D space

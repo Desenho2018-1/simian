@@ -7,7 +7,7 @@ scene.
 from simian.exceptions.unimplemented_method import NotOverriddenMethod
 
 
-class BaseScene(object):
+class BaseScene:
     """
     The base representation of a simian
     scene. A scene manage the load, update,

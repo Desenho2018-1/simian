@@ -25,7 +25,7 @@ def create_confpy(conffile):
 
 def create_runpy(runfile):
     runfile.write('from conf.py import *\n')
-    runfile.write('from simian.game_engine import GameEngine\n\n')
+    runfile.write('from simian.engine import GameEngine\n\n')
     runfile.write('engine = GameEngine()')
     runfile.write('engine.load(GAME_NAME, WINDOW_SIZE)')
     runfile.write('[engine.add(scene) for scene in SCENE_LIST]')
