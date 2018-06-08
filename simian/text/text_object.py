@@ -1,5 +1,6 @@
 import pygame
 
+from simian.utils.exception.text_exception import TextException
 
 class TextObject(Object):
 
@@ -10,12 +11,16 @@ class TextObject(Object):
     """
 
     def __init__(self,text_message,size,font_text):
-        try:
-            self.text_message = text_message
-        catch:
+
+        self.text_message = text_message
         self.size = size
         self.font_text = font_text
         self.font_object = None
+
+    def text_is_str(message):
+        if(type(message) != str):
+            raise TextException()
+
 
     def set_text_font(self):
         self.font_object =  pygame.font.SysFont(self.font_text, self.size)
