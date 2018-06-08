@@ -25,12 +25,13 @@ class SceneManager(metaclass=Singleton):
         scene_to_remove = self.find_scene(scene_name)
 
         if(scene_to_remove is not None):
-            self.scene_list.remove(scene_to_remove)
-
             # If we removed the current Scene, update the member variable
             # So we don't run a scene that is not in the list
             if(scene_name == self.current_scene.name):
-                self.current_scene = BaseScene()
+                self.current_scene = None
+
+            self.scene_list.remove(scene_to_remove)
+
 
     def load_next_scene(self):
         scene_list_length = len(self.scene_list)
