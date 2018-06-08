@@ -27,6 +27,7 @@ class SceneManagerTest(unittest.TestCase):
 
     def test_remove_scene_that_exists(self):
         self.scene_manager.add_scene(self.scenes)
+        self.scene_manager.load_scene('dummy')
         self.scene_manager.remove_scene('dummy')
         self.assertRaises(ValueError, self.scene_manager.find_scene, 'dummy')
 
