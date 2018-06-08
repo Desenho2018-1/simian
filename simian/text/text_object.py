@@ -29,8 +29,15 @@ class TextObject(Object):
         for font in all_fonts:
             print(font)
 
+    """
+        Methods for custom display text
+    """
     def is_bold(self,boolean):
             self.font_object.set_bold(boolean)
 
+
     def is_italic(self,boolean):
             self.font_object.set_italic(boolean)
+
+    def is_underline(self, boolen):
+            self.font_object.set_underline(boolen)
