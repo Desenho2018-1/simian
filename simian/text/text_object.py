@@ -55,3 +55,6 @@ class TextObject(Object):
 
     def check_italic(self):
         self.font_object.get_italic()
+
+    def check_underline(self):
+        self.font_object.get_underline()
