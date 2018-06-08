@@ -46,8 +46,12 @@ class TextObject(Object):
         """ default is false """
             self.font_object.set_underline(boolen)
 
-        """Methods for check if custom text is display"""
 
+    """
+        Methods for check if custom text is display
+    """
     def check_bold(self):
         self.font_object.get_bold()
-        
+
+    def check_italic(self):
+        self.font_object.get_italic()
