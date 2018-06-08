@@ -6,7 +6,7 @@ from simian.scene.base_scene import BaseScene
 class SceneManagerTest(unittest.TestCase):
 
     def setUp(self):
-        self.scene = BaseScene('dummy',1)
+        self.scene = BaseScene('dummy', 1)
         self.scene_manager = SceneManager()
 
     def tearDown(self):

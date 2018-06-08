@@ -1,11 +1,14 @@
 import pygame
 
+IMAGE_ASSETS = "/home/rdlenke/workspace/simian/assets/images/"
+
 
 class Sprite(pygame.sprite.Sprite):
     def __init__(self, filename):
         super(Sprite, self).__init__()
 
-        self.image = pygame.image.load(filename)  # Returns a Surface object
+        # Returns a Surface object
+        self.image = pygame.image.load(IMAGE_ASSETS + filename)
 
         # Returns the rectangular area of the Surface
         self.rect = self.image.get_rect()
@@ -27,3 +30,9 @@ class Sprite(pygame.sprite.Sprite):
 
     def set_y(self, y):
         self.rect.y = y
+
+    def get_width(self):
+        return self.rect.width
+
+    def get_height(self):
+        return self.rect.height
