@@ -1,17 +1,17 @@
 build:
 	@echo "\nBuilding your Simian environment..."
-	@docker build -f docker/Dockerfile -t simian .
+	@docker build -f scripts/docker/Dockerfile -t simian .
 	@echo "\nDONE\n"	
 
 exec:
 	@echo "\nExecuting your Simian environment..."
-	@docker-compose -f docker/docker-compose.yml up -d
+	@docker-compose -f scripts/docker/docker-compose.yml up -d
 	@docker exec -it simian /bin/bash
 	@echo "\nDONE\n"
 
 run:
 	@echo "\nRunning/Re-mounting your Simian environment..."
-	@docker-compose -f docker/docker-compose.yml up --build -d
+	@docker-compose -f scripts/docker/docker-compose.yml up --build -d
 	@docker exec -it simian /bin/bash
 	@echo "\nDONE\n"
 
