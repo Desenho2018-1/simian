@@ -23,19 +23,33 @@ A simple 2D game engine implemented with python, using pygame!
 
 `(games) $ python3 setup.py build`
 
------------------------------------------
 You can also use:
 
-```
-$ docker-compose -f docker/docker-compose.yml up --build -d 
-$ docker exec -it simian bash`
-```
+`$ docker-compose -f docker/docker-compose.yml up --build -d `
 
-or even more simple:
+`$ docker exec -it simian bash`
+
+or get more simple with docker:
 
 `$ make run`
 
-And you'll be inside the simian environment!
+If you're a Vagrant Fanboy, just:
+
+`$ vagrant box add ubuntu/xenial64`
+
+`$ vagrant up`
+
+`$ vagrant ssh`
+
+or get more simple with vagrant:
+
+`$ make v-build`
+
+`$ make v-exec`
+
+-----------------------------------------
+
+And you'll be inside Simian environment!
 
 -------------------------------------------
 
