@@ -1,0 +1,9 @@
+LICENSE
+README.rst
+README.md
+dist/
+.pytest_cache/
+venv/
+.travis.yml
+simian_engine.egg_info/
+docs/
