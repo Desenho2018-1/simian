@@ -8,7 +8,6 @@ RUN apt-get update && \
     apt-get install -y libsdl-ttf2.0-dev libsdl1.2-dev libsmpeg-dev python-numpy subversion && \
     apt-get install -y libportmidi-dev libfreetype6-dev libavformat-dev libswscale-dev mercurial
 
-# COPY IS BEING WRONG MADE NOW
 COPY ./././ /home/simian/
 
 WORKDIR /home/simian/
