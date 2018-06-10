@@ -12,28 +12,23 @@ class TextObject(object):
 
     def __init__(self,text_message="default",size=0,font_text="Arial"):
 
+    def __init__(self, text_message, size, font_text):
         self.text_message = text_message
         self.text_is_str(self.text_message)
         self.size = size
         self.font_text = font_text
+        self.font_object = None
+
+    def set_text_font(self):
         self.font_object = pygame.font.SysFont(self.font_text, self.size)
 
-    def text_is_str(self,message):
-        if(type(message) != str):
-            raise TextException()
-        else:
-            #Nothing to do
-            pass
-
-    def draw_text(self,soft_edges,color):
+    def draw_text(self, soft_edges, color):
         return self.font_object.render(self.text_message, soft_edges, color)
 
+    """
+    Return all font available on the user machine
+    """
     def available_fonts_on_machine(self):
-
-        """
-            Return all font available on the user machine
-        """
-
         all_fonts = pygame.font.get_fonts()
         for font in all_fonts:
             print(font)
