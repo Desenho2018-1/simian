@@ -3,13 +3,14 @@ import pygame
 from simian.audio.audios import Sound, Music
 from simian.audio.audio_manager import AudioManager
 
+
 class SoundTest(unittest.TestCase):
     def setUp(self):
         self.audio_manager = AudioManager()
 
     def test_should_create_sound(self):
         try:
-            sound = Sound('assets/audio/sound.wav')
+            sound = Sound('sound.wav')
             self.assertTrue(True)
         except:
             self.assertTrue(False)
@@ -22,7 +23,7 @@ class SoundTest(unittest.TestCase):
             self.assertTrue(True)
 
     def test_should_play_sound(self):
-        sound = Sound('assets/audio/sound.wav')
+        sound = Sound('sound.wav')
         self.assertTrue(sound.play())
 
     def test_should_not_play_sound(self):
@@ -34,7 +35,7 @@ class SoundTest(unittest.TestCase):
             self.assertTrue(True)
 
     def test_should_play_music(self):
-        music = Music('assets/audio/music.mp3')
+        music = Music('music.mp3')
         self.assertTrue(music.play())
 
 
@@ -46,7 +47,7 @@ class AudioManagerTest(unittest.TestCase):
 
     def test_should_play_music(self):
         self.audio_manager = AudioManager()
-        response = self.audio_manager.play_music('assets/audio/music.mp3')
+        response = self.audio_manager.play_music('music.mp3')
         self.assertTrue(response)
 
     def test_should_not_play_music(self):
@@ -60,7 +61,7 @@ class AudioManagerTest(unittest.TestCase):
 
     def test_should_stop_music(self):
         self.audio_manager = AudioManager()
-        self.audio_manager.play_music('assets/audio/music.mp3')
+        self.audio_manager.play_music('music.mp3')
 
         try:
             self.audio_manager.stop_music()
@@ -79,7 +80,7 @@ class AudioManagerTest(unittest.TestCase):
 
     def test_should_fade_out_music(self):
         self.audio_manager = AudioManager()
-        self.audio_manager.play_music('assets/audio/music.mp3')
+        self.audio_manager.play_music('music.mp3')
 
         try:
             self.audio_manager.fade_out_music(1)
@@ -96,17 +97,16 @@ class AudioManagerTest(unittest.TestCase):
         except:
             self.assertTrue(True)
 
-
     def test_should_add_sound(self):
         self.audio_manager = AudioManager()
-        self.assertTrue(self.audio_manager.add_sound('assets/audio/sound.wav'))
+        self.assertTrue(self.audio_manager.add_sound('sound.wav'))
 
     def test_should_play_sound(self):
         self.audio_manager = AudioManager()
-        self.audio_manager.add_sound('assets/audio/sound.wav')
+        self.audio_manager.add_sound('sound.wav')
 
         try:
-            self.audio_manager.play_sound('assets/audio/sound.wav')
+            self.audio_manager.play_sound('sound.wav')
             self.assertTrue(True)
         except:
             self.assertTrue(False)
@@ -122,11 +122,11 @@ class AudioManagerTest(unittest.TestCase):
 
     def test_should_stop_sound(self):
         self.audio_manager = AudioManager()
-        self.audio_manager.add_sound('assets/audio/sound.wav')
-        self.audio_manager.play_sound('assets/audio/sound.wav')
+        self.audio_manager.add_sound('sound.wav')
+        self.audio_manager.play_sound('sound.wav')
 
         try:
-            self.audio_manager.stop_sound('assets/audio/sound.wav')
+            self.audio_manager.stop_sound('sound.wav')
             self.assertTrue(True)
         except:
             self.assertTrue(False)
@@ -135,18 +135,18 @@ class AudioManagerTest(unittest.TestCase):
         self.audio_manager = AudioManager()
 
         try:
-            self.audio_manager.fade_out_sound('assets/audio/sound.wav')
+            self.audio_manager.fade_out_sound('sound.wav')
             self.assertTrue(False)
         except:
             self.assertTrue(True)
 
     def test_should_fade_out_sound(self):
         self.audio_manager = AudioManager()
-        self.audio_manager.add_sound('assets/audio/sound.wav')
-        self.audio_manager.play_sound('assets/audio/sound.wav')
+        self.audio_manager.add_sound('sound.wav')
+        self.audio_manager.play_sound('sound.wav')
 
         try:
-            self.audio_manager.fade_out_sound('assets/audio/sound.wav', 1)
+            self.audio_manager.fade_out_sound('sound.wav', 1)
             self.assertTrue(False)
         except:
             self.assertTrue(True)
@@ -155,7 +155,7 @@ class AudioManagerTest(unittest.TestCase):
         self.audio_manager = AudioManager()
 
         try:
-            self.audio_manager.fade_out_sound('assets/audio/sound.wav', 1)
+            self.audio_manager.fade_out_sound('sound.wav', 1)
             self.assertTrue(False)
         except:
             self.assertTrue(True)
