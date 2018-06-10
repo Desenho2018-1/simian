@@ -1,7 +1,9 @@
 from simian.scene.base_scene import BaseScene
 from simian.input.keyboard_manager import Keyboard
 
+
 class TemplateScene(BaseScene):
+
     def draw(self, graphics):
         pass
 

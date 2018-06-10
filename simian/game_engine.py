@@ -11,6 +11,7 @@ GAME_WINDOW_WIDTH = 600
 GAME_NAME = "PlaceHolder Name"
 NUMBER_OF_FRAMES = 60
 
+
 class GameEngine(metaclass=Singleton):
 
     def load(self, game_name, width, height):
