@@ -4,6 +4,7 @@ from simian.physics.space import Size
 from simian.utils.singleton import Singleton
 from simian.scene.scene_manager import SceneManager
 from simian.input.keyboard_manager import Keyboard
+from simian.config import Configuration
 
 # Game Configuration Constants
 GAME_WINDOW_HEIGHT = 800
@@ -17,6 +18,7 @@ class GameEngine(metaclass=Singleton):
         self.game_canvas = GameCanvas(Size(width, height), game_name)
         self.scene_manager = SceneManager()
         self.keyboard = Keyboard()
+        self.configuration = Configuration()
 
     def add_scene(self, *args):
         self.scene_manager.add_scene(args)
