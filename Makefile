@@ -1,12 +1,39 @@
+v-build:
+	@echo "\nDownloading needed environment..."
+	@vagrant box add ubuntu/xenial64
+	@echo "\nDONE\n"
+	@echo "Building your Vagrant Simian environment..."
+	@vagrant up
+
+v-exec:
+	@echo "\nEntering your Vagrant Simian environment..."
+	@vagrant ssh
+
 build:
 	@echo "\nBuilding your Simian environment..."
-	@docker build -f Dockerfile -t simian .
+	@docker build -f scripts/docker/Dockerfile -t simian .
 	@echo "\nDONE\n"	
 
-run:
-	@echo "\nRunning Simian environment..."
-	@docker-compose -f docker-compose.yml up -d
+exec:
+	@echo "\nExecuting your Simian environment..."
+	@docker-compose -f scripts/docker/docker-compose.yml up -d
 	@docker exec -it simian /bin/bash
+	@echo "\nDONE\n"
+
+run:
+	@echo "\nRunning/Re-mounting your Simian environment..."
+	@docker-compose -f scripts/docker/docker-compose.yml up --build -d
+	@docker exec -it simian /bin/bash
+	@echo "\nDONE\n"
+
+test:
+	@echo "\nRunning Simian tests..."
+	@docker exec -it simian /bin/bash -c "python3 -m pytest"
+	@echo "\nDONE\n"
+
+install:
+	@echo "\nInstalling Simian dependencies..."
+	@docker exec -it simian /bin/bash -c "pip3 install -r requirements.txt"
 	@echo "\nDONE\n"
 
 rm:

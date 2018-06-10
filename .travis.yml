@@ -1,22 +1,50 @@
+sudo: required
+
 language: python
 
 python:
   - 3.5
 
+services:
+  - docker
+
 env:
   global:
-  - CODECOV_TOKEN=eb7d0b33-d7f0-4c68-9e20-71efff8ca75e
+    - CODECOV_TOKEN=eb7d0b33-d7f0-4c68-9e20-71efff8ca75e
+    - secure: jBotWnjvJ4hVabO21QWiXEKJOnSdmn0EujSu91qo77mfB2VQ+PHm7OaNGKVl67MS3HKkQjFloFp113fyvoC2WmqllZILhO2d6k45bS+4vE2llQd7K6ai9YILRT4/3fUPEpppHyUJVU0UEacE7jokfwAHptXt00NBhlIHJMXa15yYf+wW/DlvrYBLX00wqdmuT/cjwxgYySvi4HpkaNae7RuRMLScIsQLYi3OXTPuPVlSppkje905XMmQBpWwBm1HkPSBzTSmj9nadTxuhJxfKSuzNgPXk6AZfSyRXJ1ROTWgJVGUkRh8CCliX+9Z6yXTI8JtlCQfjrxhs3TkG3QjhFYggg2Db0X312t6xznxVWkAogXgQoy1VTV4blmUYXPFNEkgEHFNwUNb72IRRtCuYLAoXuzNWbTNsDBATOtQYNMtdfsjXWhBxL/BLcPdl9F+hCUXISJdNin3iQK3NSPKR6j7JpnqiEHEm1XKPcos9xOu1GEJBQ7Ub3vq/A0Y9Koha3xXIs5estd8W6x4k5caqfQqSMzIK5z5jJFCDL5giOvFnflAmdbp99FFdr7qZMHcf8aPCd0MkfGqtSnRNpjOMWdA0XhSs123MIHq+Q94ACLXRb/k2I6d+VtIYt7D4FS35ktQgli5D08kUclXlxsCSiejNKrN+YV+AZYUdIpwaKc= #DOCKER_EMAIL
+    - secure: H4ozTvQU9mq53/8FKRUlLTnuEZy6irNe/BKCupsEVVUsnhXBvdAY7TBSum+vgdBDgcZmXRUg2vD5c03AW7g3p2rbvI7QXBWlaHJRJQ2Ia/y1fkhV3kghTGASWZLFt0qLvxlpgTggfFl0aiV06aKLgFHm3eijWfvr2kF2uYfJ6mEPdYgG6P0PUXJDpcwot9txcDmozW2yoZe8GbzhjngZudqxWWVlzY+aZDJzzcojMrhrR/RurwtdYjCAMycFHS/JGP2a7tEbsCFW4Yi0iP7drUMgtfpViAeq+Drn+/KynYeMJaoVuweO0/KkFXIN1JxiCfSRpzs92y8esS7RNkK+NkmFn0qZ/q4wzeSpqDXi3wqLQVokRUmojwlSKj82IE84X9fqMREAtrHtw8XAYuabfVBPKZdG4KSFl3oOjYIDp7X8oLil+Jn9BBLxzSZcB/mwGtSfdCExIq+XmP/msHYoNxn23HUDfmADxCWZcLwiaHR/s4irOagwKyhn/L0tugn1H/k/nhvPdD/1VzUTmiZ8HqTytQZqCmpn96/rOu/nsNdnvjN7oxE94+1Bd5FdEL1HYhoeRX9U68zZQo8ZEQpVs6GsQCU4fMYZBP1cWcvGm0TVgXUo3d/WP+ElRCzLUt9KatKeWim0AGF1ax7PP5KYvUtpTyfWrpgqNHvKjp1aIYk= #DOCKER_USERNAME
+    - secure: ByMFGg70bJ23aoJlt/NFqeGoddkXGK66kwqtuIK+FJGSglqPM4QbgrUr8d1Cz+bltQhnLeHZ4/ahmCjh93rfeowqcoiwyRXgkJ/tj3aARGAZLL99vZqxnelx3g2DEtJ/VinqYw/MNZ7WRZTa5EaLR6D+fsIKQJQO46w4G9I3Ivzck/hTKoFbE6hv5Jua2gtvtlM/MEMblS+gQU7m8wrXWM1zqjTBP7MR82lm+JTqXFoYAHIvOYPDQzv11VH0lR1NRbYi2//V7lig2Ro4vHs4JWCHHOlyiM4cq/RCbmxwKdY7uJej927xSmseUt5BLCkGFnWzDqkMxIPDoP5QPWU/eMmIFCbSA32H5XgW4zF+gjI7mR6pH0/wzfwVuhCtN/YksuXsbvNJa90EEFsXBS5fdQtDQmRr7WF/YtwudJG1eryiyzNbsC07//NRS9WChrXWqPzvCTwjyeNcY1fvEvUZWWUNajWX25U17iYPHp7sKbcn/vL1IeI1r9d95EZK1HlCAigEO186nm2Wx8QXVhaviE27LjxlYpD6/Y8+qBGoSCEj9YRP5B3gX8v2HldZsoTilgah/aeRCmAIb+ZQ2cbKRLYPiBwbgvsBWsy9An6vYVYFCuQObbEf/tm5sGARpnpAVeQ/q2H/bwV7wsR7nJGVv1uVx7WagmEFZMhRWqibH0o= #DOCKER_PASSWORD
+  matrix:
+    - TASK="python3 -m pytest"
+    - TASK="pep8 --show-source --show-pep8 *.py */*.py */**/*.py"
 
 install:
+  - sudo apt-get install alsa-base alsa-utils pulseaudio
   - pip3 install -r requirements.txt
   - pip3 install codecov
+  - pip3 install pep8
 
 before_script:
   - python3 setup.py build
-  - coverage run tests/
 
 script:
-  - python3 -m pytest
+  - $TASK
 
-  after_success:
+after_success:
+  - coverage run tests/
   - codecov
+  - ./docker-deploy.sh
+
+deploy:
+  - provider: pypi
+    user: alaxalves
+    password:
+      secure: A9BgjsRjxtIq1DrmHuhyk5euxsSUJlrvK4J9idC0aBZyaxpLE3uEM+TvlLKeDD/mJoV1aPQf2fqsJmRKvaWaXq08t2SFQuiopGVkVHnmCSNHmuhm/mIVKIRPQ/zhjFVUzvx7NYb6t0FwkUFgg+U12ZU31qug8l5Y+xqcA0vH6uQB+jxhCLkwFMSJZghiMi0bFpvoY+inLhytsmAnwHpvFvaFK6zUwd66QM87t4WoOC+T/jYzoXnuH0RaveFcO8Nlw/d4n0ajMQWz8uS41saA+UNQkticpbCmXC5DE5qmPljB9mjco9B7pzs0p7Ti0mmhJKvcqArk1ZA9PCv5d7vuWAfpodayWyCuD5XiRBSziMFJYle6+VR9DcxjdTlvZ5TMUTBAKpmfw6h2ILW6RxvX/Cqwvs+AbeDr/f2yJsedGj2mTANbZ8Ta7Viagbnes97U6ek+rpgoam51kb3/XnRFVi29ByZ0HiSCuD8AbchCQTHUBFyNaI2AZPlSz4MKwoRqbtZ3kBflr42h4ftWVlR+5yCE8YYuf+T9ivDS2AwWZ8eS23auuku6MSpDEAGZD1HYySUaZDUVpi687cJwyZAYa/npq58Y9aILkdyjju5iBtHkUrSBhHZgLe8ExefbSUxokvMcTxHv+4JnaBm5GbaDQh87Na0tGKxA4zShn0cdy6E=
+    on:
+      branch: master
+      python: 3.5
+  
+  - provider: script
+    script: bash scripts/sh/docker-deploy.sh
+    on:
+      branch: master
