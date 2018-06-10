@@ -10,23 +10,25 @@ class TextObject(object):
         on screen and scene
     """
 
-    def __init__(self,text_message="default",size=0,font_text="Arial"):
-
     def __init__(self, text_message, size, font_text):
         self.text_message = text_message
-        self.text_is_str(self.text_message)
+    #    self.text_is_str(self.text_message)
         self.size = size
         self.font_text = font_text
-        self.font_object = None
-
-    def set_text_font(self):
         self.font_object = pygame.font.SysFont(self.font_text, self.size)
+
+    def text_is_str(self, message):
+        if(isinstance(message, str)):
+            raise TextException()
+        else:
+            #nothing todo
+            pass
 
     def draw_text(self, soft_edges, color):
         return self.font_object.render(self.text_message, soft_edges, color)
 
     """
-    Return all font available on the user machine
+        Return all font available on the user machine
     """
     def available_fonts_on_machine(self):
         all_fonts = pygame.font.get_fonts()
@@ -59,7 +61,6 @@ class TextObject(object):
 
     def check_italic(self):
         self.font_object.get_italic()
-
 
     def check_underline(self):
         self.font_object.get_underline()

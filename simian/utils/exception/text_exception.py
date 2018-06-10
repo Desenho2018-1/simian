@@ -6,4 +6,4 @@
 class TextException(Exception):
 
     def __init__(self):
-        super().__init__("This text not a string")
+        super().__init__("This is not a string")
