@@ -7,7 +7,7 @@ from simian.utils.project import create_project
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('option', help='siamian options')
-    parser.add_argument('arg_option', \
+    parser.add_argument('arg_option',
                         help='option arguments [game_name, run.py]')
 
     args = parser.parse_args()

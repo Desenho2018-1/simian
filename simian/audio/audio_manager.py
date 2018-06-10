@@ -16,7 +16,7 @@ class AudioManager:
         pygame.mixer.unpause()
 
     """
-    Used to call music class functions and 
+    Used to call music class functions and
     play a single music in an infinite loop
     """
     def play_music(self, music_path):
@@ -43,7 +43,7 @@ class AudioManager:
             raise Exception('There is no music playing right now')
 
     """
-    Used to add a sound to a list of available sounds that can be 
+    Used to add a sound to a list of available sounds that can be
     used by pygame
     """
     def add_sound(self, sound_path):

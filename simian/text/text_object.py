@@ -32,5 +32,5 @@ class TextObject(Object):
     def is_bold(self, boolean):
         self.font_object.set_bold(boolean)
 
-    def is_italic(self,boolean):
+    def is_italic(self, boolean):
         self.font_object.set_italic(boolean)

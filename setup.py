@@ -32,39 +32,39 @@ INSTALL_REQS = parse_requirements('requirements.txt', session='hack')
 REQUIRES = [str(ir.req) for ir in INSTALL_REQS]
 
 setup(
-    name = 'simian_engine',
+    name='simian_engine',
 
-    version = '0.0.1',
+    version='0.0.1',
 
-    description = 'A simple 2D game engine implemented with python!',
+    description='A simple 2D game engine implemented with python!',
 
-    long_description = codecs.open('README.rst', 'rb', 'utf8').read(),
+    long_description=codecs.open('README.rst', 'rb', 'utf8').read(),
 
-    url = 'https://github.com/Desenho2018-1/simian',
+    url='https://github.com/Desenho2018-1/simian',
 
-    packages = find_packages(exclude=['contrib', 'docs', 'tests', 'simian']),
+    packages=find_packages(exclude=['contrib', 'docs', 'tests', 'simian']),
 
-    install_requires = REQUIRES,
+    install_requires=REQUIRES,
 
-    entry_points = {
+    entry_points={
         'console_scripts': [
             'simian = simian.cli.cmd:main',
         ],
     },
 
-    classifiers = CLASSIFIERS,
+    classifiers=CLASSIFIERS,
 
-    license = 'MIT',
+    license='MIT',
 
-    keywords = ['game', 'engine', 'simian'],
+    keywords=['game', 'engine', 'simian'],
 
-    author = 'Simian',
+    author='Simian',
 
-    author_email = 'simiangameengine@gmail.com',
+    author_email='simiangameengine@gmail.com',
 
-    maintainer = 'Simian',
+    maintainer='Simian',
 
-    maintainer_email = 'simiangameengine@gmail.com',
+    maintainer_email='simiangameengine@gmail.com',
 
-     platforms = 'any',
+    platforms='any',
 )

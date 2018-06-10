@@ -26,7 +26,7 @@ class BaseSceneTest(unittest.TestCase):
             self.baseScene.load()
         except Exception as message:
             message_exception = str(message)
-            self.assertEqual("the method load isn't overridden", \
+            self.assertEqual("the method load isn't overridden",
                              message_exception)
 
     def test_unimplemented_method_unload(self):
@@ -35,7 +35,7 @@ class BaseSceneTest(unittest.TestCase):
             self.baseScene.unload()
         except Exception as message:
             message_exception = str(message)
-            self.assertEqual("the method unload isn't overridden", \
+            self.assertEqual("the method unload isn't overridden",
                              message_exception)
 
     def test_unimplemented_method_draw(self):
@@ -45,7 +45,7 @@ class BaseSceneTest(unittest.TestCase):
             self.baseScene.draw(grafics)
         except Exception as message:
             message_exception = str(message)
-            self.assertEqual("the method draw isn't overridden", \
+            self.assertEqual("the method draw isn't overridden",
                              message_exception)
 
     def test_unimplemented_method_update(self):
@@ -55,7 +55,7 @@ class BaseSceneTest(unittest.TestCase):
             self.baseScene.update(time_elapsed)
         except Exception as message:
             message_exception = str(message)
-            self.assertEqual("the method update isn't overridden", \
+            self.assertEqual("the method update isn't overridden",
                              message_exception)
 
 if __name__ == '__main__':

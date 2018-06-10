@@ -41,7 +41,7 @@ class SoundTest(unittest.TestCase):
 
 
 class AudioManagerTest(unittest.TestCase):
- 
+
     def test_should_construct_music(self):
         self.audio_manager = AudioManager()
         self.assertTrue(self.audio_manager.music is None)
