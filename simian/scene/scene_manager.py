@@ -32,12 +32,11 @@ class SceneManager(metaclass=Singleton):
 
             self.scene_list.remove(scene_to_remove)
 
-
     def load_next_scene(self):
         scene_list_length = len(self.scene_list)
         if(self.current_scene):
             next_scene_index = self.scene_list.index(self.current_scene) + 1
-        else:            
+        else:
             next_scene_index = 0
         # Check if the current scene is the last scene of the game
         if(next_scene_index < scene_list_length):

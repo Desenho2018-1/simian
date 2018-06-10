@@ -9,7 +9,7 @@ here = path.abspath(path.dirname(__file__))
 with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
     README = readme.read()
 
-CLASSIFIERS= [
+CLASSIFIERS = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Natural Language :: Portuguese",
@@ -66,5 +66,5 @@ setup(
 
     maintainer_email='simiangameengine@gmail.com',
 
-     platforms='any',
+    platforms='any',
 )

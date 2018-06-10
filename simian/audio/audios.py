@@ -57,8 +57,8 @@ class Sound(Audio):
 
 class Music(Audio):
     """
-    Used to play music in an infinite loop, only one music can be played at once
-    in a game.
+    Used to play music in an infinite loop, only one music can be played
+    at once in a game.
     """
     def __init__(self, filename):
         Audio.__init__(self, filename)
