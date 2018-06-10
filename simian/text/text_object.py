@@ -2,6 +2,7 @@ import pygame
 
 from simian.utils.exception.text_exception import TextException
 
+
 class TextObject(object):
 
     """
@@ -21,7 +22,7 @@ class TextObject(object):
         if(isinstance(message, str)):
             raise TextException()
         else:
-            #nothing todo
+            # nothing todo
             pass
 
     def draw_text(self, soft_edges, color):
@@ -38,14 +39,13 @@ class TextObject(object):
     """
         Methods for custom display text
     """
-    def is_bold(self,boolean):
+    def is_bold(self, boolean):
         """ default is false """
         self.font_object.set_bold(boolean)
 
-    def is_italic(self,boolean):
+    def is_italic(self, boolean):
         """ default is false """
         self.font_object.set_italic(boolean)
-
 
     def is_underline(self, boolen):
         """ default is false """
@@ -57,7 +57,6 @@ class TextObject(object):
 
     def check_bold(self):
         self.font_object.get_bold()
-
 
     def check_italic(self):
         self.font_object.get_italic()
