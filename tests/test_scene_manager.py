@@ -2,10 +2,11 @@ import unittest
 from simian.scene.scene_manager import SceneManager
 from template_game.template_scene import TemplateScene
 
+
 class SceneManagerTest(unittest.TestCase):
 
     def setUp(self):
-        self.scene = TemplateScene('dummy',1)
+        self.scene = TemplateScene('dummy', 1)
         self.scenes = (self.scene,)
         self.scene_manager = SceneManager()
         self.scene_manager.scene_list = []
@@ -23,7 +24,8 @@ class SceneManagerTest(unittest.TestCase):
 
     def test_add_scene_that_is_already_in_list(self):
         self.scene_manager.add_scene(self.scenes)
-        self.assertRaises(ValueError, self.scene_manager.add_scene, self.scenes)
+        self.assertRaises(ValueError, self.scene_manager.add_scene,
+                          self.scenes)
 
     def test_remove_scene_that_exists(self):
         self.scene_manager.add_scene(self.scenes)
@@ -41,7 +43,7 @@ class SceneManagerTest(unittest.TestCase):
         self.assertRaises(ValueError, self.scene_manager.remove_scene, 'dummy')
 
     def test_load_next_scene(self):
-        next_scene = TemplateScene('dummy_two',2)
+        next_scene = TemplateScene('dummy_two', 2)
 
         self.scene_manager.add_scene(self.scenes)
         self.scene_manager.add_scene((next_scene,))

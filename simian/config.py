@@ -1,24 +1,33 @@
-import ConfigParser
+import configparser
 import io
+import os
 
-IMAGE_ASSETS_PATH = ''
-AUDIO_ASSETS_PATH = ''
 
-class Configuration():
+class Configuration(object):
 
-    def __init__():
+    def __init__(self):
+        self.IMAGE_ASSETS_PATH = ''
+        self.AUDIO_ASSETS_PATH = ''
         self.paths_section = 'paths'
-        self.image_assets_path = 'IMAGE_ASSETS_PATH'
-        self.audio_assets_path = 'AUDIO_ASSETS_PATH'
+        self.image_assets_path = 'image_assets'
+        self.audio_assets_path = 'audio_assets'
+
         self.load_file()
         self.load_config()
+        self.correct_paths()
 
-    def load_file():
-        with open("config.ini") as f:
-            configuration = f.read()
-        self.config = ConfigParser.RawConfigParser(allow_no_value=True)
-        self.config.readfp(io.BytesIO(configuration))
+    def load_file(self):
+        dirname = os.path.dirname(__file__)
+        self.config = configparser.ConfigParser()
+        self.config.read(dirname + '/config.ini')
 
-    def load_config():
-        AUDIO_ASSETS_PATH = self.config.get(self.paths_section, self.audio_assets_path)
-        IMAGE_ASSETS_PATH = self.config.get(self.paths_section, self.image_assets_path)
+    def load_config(self):
+        self.AUDIO_ASSETS_PATH = (
+            (self.config[self.paths_section][self.audio_assets_path]))
+
+        self.AUDIO_ASSETS_PATH = self.AUDIO_ASSETS_PATH.strip("'")
+
+        self.IMAGE_ASSETS_PATH = (
+            (self.config[self.paths_section][self.image_assets_path]))
+
+        self.IMAGE_ASSETS_PATH = self.IMAGE_ASSETS_PATH.strip("'")

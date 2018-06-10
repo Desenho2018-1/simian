@@ -1,5 +1,6 @@
 import unittest
 from simian.sprite.sprite import Sprite
+from simian.config import Configuration
 
 
 class SpriteTest(unittest.TestCase):
