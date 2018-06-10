@@ -19,12 +19,14 @@ class GameCanvas(metaclass=Singleton):
                  width=800, height=600):
         self.size = size if size else Size(width, height)
         self.name = name
+        self.screen = None
 
     def open(self):
         """
         Open the screen
         """
-        screen = pygame.display.set_mode(self.size())
+        self.screen = pygame.display.set_mode(self.size())
+
         pygame.display.set_caption(self.name)
         """
         Keep the screen open, when on while True
@@ -33,6 +35,9 @@ class GameCanvas(metaclass=Singleton):
 
     def refresh_screen(self):
         pygame.display.flip()
+
+    def get_screen(self):
+        return self.screen
 
     def close(self):
         """

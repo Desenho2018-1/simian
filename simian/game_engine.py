@@ -30,14 +30,20 @@ class GameEngine(metaclass=Singleton):
 
         clock = pygame.time.Clock()
         self.game_canvas.open()
+        self.screen = self.game_canvas.get_screen()
+
         pygame.key.set_repeat(True)
         while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     exit()
 
-            self.scene_manager.current_scene.update(clock.get_time())
-            self.scene_manager.current_scene.draw(None)
+            self.scene_manager.current_scene.update(clock.get_time()/1000)
+            
+            groups = pygame.sprite.OrderedUpdates()
+            self.scene_manager.current_scene.draw(groups)
+            groups.draw(self.screen)
+            
             # Refresh screen
             self.game_canvas.refresh_screen()
 
