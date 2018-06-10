@@ -1,13 +1,12 @@
 
+from simian.utils.exception.unimplemented_method import NotOverriddenMethod
 """
 This class create base structure for
 creation scenes in games
 """
 
-from simian.utils.exception.unimplemented_method import NotOverriddenMethod
 
 class BaseScene(object):
-
 
     def __init__(self, name="DEFAULT", id=0):
         self.name = name

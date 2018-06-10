@@ -15,7 +15,8 @@ class GameCanvas(metaclass=Singleton):
     (windows where every renderable object must be rendered)
     """
 
-    def __init__(self, size=None, name='Game made with Simian',width=800, height=600):
+    def __init__(self, size=None, name='Game made with Simian', 
+                 \width=800, height=600):
         self.size = size if size else Size(width, height)
         self.name = name
 
@@ -25,7 +26,6 @@ class GameCanvas(metaclass=Singleton):
         """
         screen = pygame.display.set_mode(self.size())
         pygame.display.set_caption(self.name)
-
         """
         Keep the screen open, when on while True
         """
@@ -34,10 +34,8 @@ class GameCanvas(metaclass=Singleton):
     def refresh_screen(self):
         pygame.display.flip()
 
-
     def close(self):
         """
         Close the screen
         """
         pygame.display.quit()
-        
