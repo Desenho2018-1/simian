@@ -21,6 +21,8 @@ A simple 2D game engine implemented with python, using pygame!
 
 2. Then go to our simian folder (where you can see setup.py):
 
+`(games) $ pip3 install -r requirements.txt`
+
 `(games) $ python3 setup.py build`
 
 You can also use:
