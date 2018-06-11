@@ -21,18 +21,17 @@ env:
 install:
   - sudo apt-get install alsa-base alsa-utils pulseaudio
   - pip3 install -r requirements.txt
-  - pip3 install codecov
-  - pip3 install pep8
 
 before_script:
   - python3 setup.py build
 
 script:
   - $TASK
+  - coverage run tests/*.py
 
 after_success:
-  - coverage run tests/
   - codecov
+  - bash <(curl -s https://codecov.io/bash)
   - ./docker-deploy.sh
 
 deploy:
@@ -43,6 +42,8 @@ deploy:
     on:
       branch: master
       python: 3.5
+    edge:
+      branch: v1.8.45
   
   - provider: script
     script: bash scripts/sh/docker-deploy.sh
