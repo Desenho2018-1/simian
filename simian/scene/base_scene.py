@@ -5,7 +5,11 @@ scene.
 """
 
 from simian.exceptions.unimplemented_method import NotOverriddenMethod
-
+from enum import Enum
+class State(Enum):
+    CREATED = 0
+    STARTED = 1
+    FINISHED = 2
 
 class BaseScene:
     """
