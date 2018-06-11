@@ -1,6 +1,6 @@
 import pygame
 
-IMAGE_ASSETS = "/home/rdlenke/workspace/simian/assets/images/"
+IMAGE_ASSETS = "/home/pablo/Documentos/RepositorioGit/simian/examples/"
 
 
 class Sprite(pygame.sprite.Sprite):
