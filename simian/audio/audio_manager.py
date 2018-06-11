@@ -1,6 +1,7 @@
 import pygame
 from simian.audio.audios import Audio, Music, Sound
 
+
 class AudioManager:
     def __init__(self):
         pygame.mixer.init()
@@ -15,7 +16,8 @@ class AudioManager:
         pygame.mixer.unpause()
 
     """
-    Used to call music class functions and play a single music in an infinite loop
+    Used to call music class functions and
+    play a single music in an infinite loop
     """
     def play_music(self, music_path):
         self.music = Music(music_path)
@@ -26,7 +28,7 @@ class AudioManager:
     Used to stop an already playing music
     """
     def stop_music(self):
-        if self.music != None:
+        if self.music is not None:
             self.music.stop()
         else:
             raise Exception('There is no music playing right now')
@@ -35,13 +37,14 @@ class AudioManager:
     Used to fade out an already playing music
     """
     def fade_out_music(self, fade_out_time):
-        if self.music != None:
+        if self.music is not None:
             self.music.fade_out(fade_out_time)
         else:
             raise Exception('There is no music playing right now')
 
     """
-    Used to add a sound to a list of available sounds that can be used by pygame
+    Used to add a sound to a list of available sounds that can be
+    used by pygame
     """
     def add_sound(self, sound_path):
         if len(self.sounds) < 8:
