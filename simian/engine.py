@@ -40,6 +40,12 @@ class GameEngine(metaclass=Singleton):
         """
         self.scene_manager.load_scene(scene_name)
 
+    def set_next_scene(self, scene_name):
+        """
+        Set the next scene to be loaded on the engine.
+        """
+        self.scene_manager.set_next_scene(scene_name)
+
     def run(self):
         """
         Initialize pygame, open window and start
@@ -57,10 +63,10 @@ class GameEngine(metaclass=Singleton):
                 if event.type == pygame.QUIT:
                     exit()
 
-            self.scene_manager.current_scene.update(clock.get_time()/1000)
+            self.scene_manager.update(clock.get_time()/1000)
             
             groups = pygame.sprite.OrderedUpdates()
-            self.scene_manager.current_scene.draw(groups)
+            self.scene_manager.draw(groups)
             groups.draw(self.screen)
             
             # Refresh screen
