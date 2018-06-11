@@ -1,4 +1,4 @@
-from simian.scene.base_scene import BaseScene
+from simian.scene.base_scene import BaseScene, State
 from simian.utils.singleton import Singleton
 
 
@@ -52,6 +52,21 @@ class SceneManager(metaclass=Singleton):
             self.current_scene = scene
             self.current_scene.load()
 
+ 
+    def update(self, time_elapsed):
+        if(self.current_scene):
+            self.current_scene.update(time_elapsed)
+        else:
+            raise ValueError("Scene was not set, can't update.")
+ 
+    def draw(self, graphics):
+        if(self.current_scene):
+            self.current_scene.draw(graphics)
+            if(self.current_scene.state == State.FINISHED):
+                self.load_next_scene()
+        else:
+            raise ValueError("Scene was not set, can't draw.")
+ 
     def is_scene_on_list(self, scene_name):
         try:
             self.find_scene(scene_name)

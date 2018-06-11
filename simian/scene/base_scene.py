@@ -20,6 +20,7 @@ class BaseScene:
     def __init__(self, name='Default Scene', id=0):
         self.name = name
         self.id = id
+        self.state = State['CREATED'] 
 
     def draw(self, graphics):
         raise NotOverriddenMethod('draw')
