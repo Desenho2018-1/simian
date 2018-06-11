@@ -6,7 +6,7 @@ coordinate system.
 from math import sqrt, pow
 
 
-class Vec2(object):
+class Vec2:
     """
     A vector with 2 dimensions.
     """
