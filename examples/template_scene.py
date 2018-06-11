@@ -1,12 +1,13 @@
 from simian.scene.base_scene import BaseScene
 from simian.input.keyboard_manager import Keyboard
-from template_player_object import Player
+from examples.template_player_object import Player
+
+
 class TemplateScene(BaseScene):
 
     def draw(self, graphics):
         for game_object in self.game_objects:
             game_object.draw(graphics)
-
 
     def update(self, time_elapsed):
         for game_object in self.game_objects:

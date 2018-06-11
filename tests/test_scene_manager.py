@@ -1,6 +1,6 @@
 import unittest
 from simian.scene.scene_manager import SceneManager
-from template_game.template_scene import TemplateScene
+from examples.template_scene import TemplateScene
 
 
 class SceneManagerTest(unittest.TestCase):

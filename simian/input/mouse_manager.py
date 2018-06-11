@@ -58,6 +58,8 @@ class Mouse(metaclass=Singleton):
     # Set an gameObject to be your new icon
     def set_custom_cursor(self, gameObject):
         self.set_visible(False)
+        position = self.get_position()
+
 
     # Check if mouse is over a gameObject
     def is_over(self, gameObject):

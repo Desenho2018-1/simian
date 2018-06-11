@@ -7,7 +7,7 @@ used to detect collision between game objects.
 from simian.math.vector import Vec2
 
 
-class BoxCollider(object):
+class BoxCollider:
     """
     A box that represents the shape
     of a rigid body, is used to perform

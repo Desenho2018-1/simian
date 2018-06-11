@@ -1,11 +1,13 @@
-from simian.gameobject.game_object import GameObject
+from simian.object import GameObject
 from simian.sprite.sprite import Sprite
 from simian.input.keyboard_manager import Keyboard
+
+
 class Player(GameObject):
     
     def __init__(self, x, y):
         super().__init__(x,y)
-        self.sprite = Sprite("engineer.jpg")
+        self.sprite = Sprite("image.png")
         self.keyboard = Keyboard()
         self.speed = 500
 
