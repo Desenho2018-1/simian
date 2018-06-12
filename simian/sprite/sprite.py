@@ -40,3 +40,8 @@ class Sprite(pygame.sprite.Sprite):
 
     def get_height(self):
         return self.rect.height
+
+    def draw(self, graphics, x, y):
+        self.set_x(x)
+        self.set_y(y)
+        graphics.add(self)
