@@ -1,7 +1,6 @@
 import argparse
 import os
 
-from simian.cli.regex import validate_project_name
 from simian.utils.project import create_project
 
 from cookiecutter.main import cookiecutter
