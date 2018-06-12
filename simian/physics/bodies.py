@@ -19,14 +19,23 @@ class RigidBody(GameObject):
 
     def __init__(self, position, mass, collider, restitution=0,
                  velocity=None, force=None):
-        super().__init__(position.x, position.y)
+        super().__init__(position[0], position[1])
         self.mass = mass
         self.collider = collider
         self.restitution = restitution
         self.velocity = velocity if velocity is not None else Vec2(0, 0)
 
+    @property
+    def position(self):
+        return self._position
+
+    @position.setter
+    def position(self, new_pos):
+        self._position = new_pos
+        self.collider.position = new_pos
+
     def apply_impulse(self, impulse):
         """
         Apply a given impulse to his body.
         """
-        self.velocity += 1/self.mass * impulse
+        self.velocity += impulse / self.mass

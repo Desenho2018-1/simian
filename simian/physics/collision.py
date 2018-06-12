@@ -50,14 +50,16 @@ def resolve_collision(body_a, body_b, normal):
     """
     relative_velocity = body_b.velocity - body_a.velocity
     relative_velocity_normal = relative_velocity.dot(normal)
-
     if relative_velocity_normal > 0:
         e = sqrt(body_a.restitution + body_b.restitution)
 
         scalar_impulse = -(1 * e) * relative_velocity_normal
         scalar_impulse /= 1/body_a.mass + 1/body_b.mass
 
+        print(scalar_impulse)
         impulse = normal * scalar_impulse
+
+        #print(impulse)
 
         body_a.velocity -= impulse * (1/body_a.mass)
         body_b.velocity += impulse * (1/body_b.mass)
