@@ -1,6 +1,7 @@
 import pygame
 import logging
 from abc import ABC, abstractmethod
+from simian.config import Configuration
 
 """
 Variables used to define state
@@ -9,10 +10,13 @@ PLAY_ONCE = 0
 PLAY_LOOPING = 0
 
 
+AUDIO_PATH = Configuration().AUDIO_ASSETS_PATH
+
+
 class Audio(ABC):
 
-    def __init__(self, audio_path):
-        self.audio_path = audio_path
+    def __init__(self, filename):
+        self.audio_path = AUDIO_PATH + filename
 
     @abstractmethod
     def play(self):
@@ -33,9 +37,9 @@ class Sound(Audio):
     played at once in a game.
     The sound file must be an OGG audio file or from an uncompressed WAV
     """
-    def __init__(self, sound_path):
-        Audio.__init__(self, sound_path)
-        self.sound = pygame.mixer.Sound(sound_path)
+    def __init__(self, filename):
+        Audio.__init__(self, filename)
+        self.sound = pygame.mixer.Sound(self.audio_path)
 
     def play(self):
         try:
@@ -56,8 +60,8 @@ class Music(Audio):
     Used to play music in an infinite loop, only one music can be played
     at once in a game.
     """
-    def __init__(self, music_path):
-        Audio.__init__(self, music_path)
+    def __init__(self, filename):
+        Audio.__init__(self, filename)
         print(pygame.mixer.music.load(self.audio_path))
 
     def play(self):
