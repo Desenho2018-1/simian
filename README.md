@@ -1,5 +1,7 @@
 ## Simian
 
+[![codecov](https://codecov.io/gh/Desenho2018-1/simian/branch/master/graph/badge.svg)](https://codecov.io/gh/Desenho2018-1/simian)
+
 A simple 2D game engine implemented with python, using pygame!
 
 ## Especification

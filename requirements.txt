@@ -26,3 +26,4 @@ twine==1.11.0
 urllib3==1.22
 wheel==0.31.1
 configparser==3.5.0
+pep8==1.7.1
