@@ -1,6 +1,10 @@
 import pygame
+from simian.config import Configuration
 
-IMAGE_ASSETS = "/home/rdlenke/workspace/simian/assets/images/"
+# TODO Correct this so we use the singleton instance of the engine
+# not a new instance of config
+
+IMAGE_ASSETS = Configuration().IMAGE_ASSETS_PATH
 
 
 class Sprite(pygame.sprite.Sprite):
@@ -36,3 +40,8 @@ class Sprite(pygame.sprite.Sprite):
 
     def get_height(self):
         return self.rect.height
+
+    def draw(self, graphics, x, y):
+        self.set_x(x)
+        self.set_y(y)
+        graphics.add(self)
