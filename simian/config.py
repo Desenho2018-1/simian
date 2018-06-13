@@ -37,7 +37,7 @@ class Configuration(object):
     def correct_paths(self):
         self.strip_quotes()
         self.transform_relative_to_absolute()
-        
+
     def strip_quotes(self):
         self.AUDIO_ASSETS_PATH = self.AUDIO_ASSETS_PATH.strip("'")
         self.IMAGE_ASSETS_PATH = self.IMAGE_ASSETS_PATH.strip("'")
@@ -49,7 +49,7 @@ class Configuration(object):
             self.IMAGE_ASSETS_PATH = os.path.join(dirname,
                                                   self.IMAGE_ASSETS_PATH)
 
-            self.IMAGE_ASSETS_PATH = os.path.realpath(self.IMAGE_ASSETS_PATH)  
+            self.IMAGE_ASSETS_PATH = os.path.realpath(self.IMAGE_ASSETS_PATH)
 
         if(not os.path.isabs(self.AUDIO_ASSETS_PATH)):
             self.AUDIO_ASSETS_PATH = os.path.join(dirname,
