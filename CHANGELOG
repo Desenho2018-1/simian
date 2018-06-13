@@ -1,0 +1,16 @@
+0.0.1
+ - Scene Class
+ - SceneManager Class
+ - Sound Class
+ - Docker Env
+ - Integração Contínua
+ - Deploy Contínuo - PyPi
+
+0.0.2
+ - Sprite Class
+ - Keyboard Class
+ - Text Class
+ - PEP8
+ - Vagrant Env
+ - Manual Técnico do Framework
+ - Deploy Contínuo - Docker
