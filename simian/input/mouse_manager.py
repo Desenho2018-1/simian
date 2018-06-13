@@ -71,15 +71,15 @@ class Mouse(metaclass=Singleton):
 
         return False
 
-    # Get data that compose mouse cursor
     def get_cursor(self):
         """
         Returns data that constructs the cursor.
         """
         return pygame.mouse.get_cursor()
 
-    def set_cursor(size, hotspot, xormasks, andmasks):
+    def set_cursor(self, size, hotspot, xormasks, andmasks):
         """
+        Get data that construct the cursor layout based on (xor/and)masks
         """
         pygame.mouse.set_cursor(size, hotspot, xormasks, andmasks)
 
@@ -88,7 +88,10 @@ class Mouse(metaclass=Singleton):
         Sets an game_object to be your new cursor icon.
         """
         self.set_visible(False)
-        position = self.get_position()
+        self.set_cursor((8,8), (4,4), (0,0),(0,0))
+        mouse_position = self.get_position()
+        game_object.set_x(mouse_position[0])
+        game_object.set_y(mouse_position[1])
 
     def is_over(self, game_object):
         """
