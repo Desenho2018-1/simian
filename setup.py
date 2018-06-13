@@ -34,7 +34,7 @@ REQUIRES = [str(ir.req) for ir in INSTALL_REQS]
 setup(
     name='simian_engine',
 
-    version='0.0.1',
+    version='0.0.2',
 
     description='A simple 2D game engine implemented with python!',
 

@@ -1,5 +1,6 @@
 import pygame
 import logging
+import os
 from abc import ABC, abstractmethod
 from simian.config import Configuration
 
@@ -16,7 +17,9 @@ AUDIO_PATH = Configuration().AUDIO_ASSETS_PATH
 class Audio(ABC):
 
     def __init__(self, filename):
-        self.audio_path = AUDIO_PATH + filename
+        file_absolute_path = os.path.join(AUDIO_PATH, filename)
+
+        self.audio_path = file_absolute_path
 
     @abstractmethod
     def play(self):
