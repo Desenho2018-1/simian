@@ -51,7 +51,7 @@ class Mouse(metaclass=Singleton):
     def get_cursor(self):
         return pygame.mouse.get_cursor()
 
-    # 
+    #
     def set_cursor(size, hotspot, xormasks, andmasks):
         pygame.mouse.set_cursor(size, hotspot, xormasks, andmasks)
 
@@ -76,7 +76,7 @@ class Mouse(metaclass=Singleton):
         return False
 
     # Check if mouse clicked over game_object
-    def is_clicked(self, game_object):
+    def is_clicked_over(self, game_object):
         is_over = self.is_over(game_object)
         button_pressed = {'left': False,
                           'scroll': False,
@@ -89,3 +89,17 @@ class Mouse(metaclass=Singleton):
 
 
         return button_pressed
+
+    # Drag a game_object changing the position
+    def drag(self, button_choice, game_object):
+        buttons = {'left': self.left_pressed(),
+                   'scroll': self.scroll_pressed(),
+                   'right': self.right_pressed()}
+
+        button_clicked = buttons[button_choice]
+
+        if button_clicked:
+            mouse_position = self.get_position()
+            return mouse_position
+
+        return (game_object.position.x, game_object.position.y)
