@@ -5,7 +5,7 @@ import os
 
 class Configuration(object):
 
-    def __init__(self, config_path):
+    def __init__(self, config_path='./config.ini'):
         self.IMAGE_ASSETS_PATH = ''
         self.AUDIO_ASSETS_PATH = ''
         self.paths_section = 'paths'
