@@ -1,4 +1,5 @@
 import pygame
+import os
 from simian.config import Configuration
 
 # TODO Correct this so we use the singleton instance of the engine
@@ -11,8 +12,10 @@ class Sprite(pygame.sprite.Sprite):
     def __init__(self, filename):
         super(Sprite, self).__init__()
 
+        file_absolute_path = os.path.join(IMAGE_ASSETS, filename)
+
         # Returns a Surface object
-        self.image = pygame.image.load(IMAGE_ASSETS + filename)
+        self.image = pygame.image.load(file_absolute_path)
 
         # Returns the rectangular area of the Surface
         self.rect = self.image.get_rect()
