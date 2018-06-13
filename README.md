@@ -4,6 +4,8 @@
 
 A simple 2D game engine implemented with python, using pygame!
 
+Get to know us better at: https://desenho2018-1.github.io/simian/
+
 ## Especification
 
 - Python v3.6.5
