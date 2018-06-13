@@ -3,45 +3,69 @@ from simian.utils.singleton import Singleton
 
 
 class Mouse(metaclass=Singleton):
-    # Check if left button of mouse is pressed
     def left_pressed(self):
+        """
+        Returns True if the LEFT button of
+        mouse is being pressed and False otherwise.
+        """
         if pygame.mouse.get_pressed()[0] is 1:
             return True
 
         return False
 
-    # Check if scroll button of mouse is pressed
     def scroll_pressed(self):
+        """
+        Returns True if the SCROLL button of
+        mouse is being pressed and False otherwise.
+        """
         if pygame.mouse.get_pressed()[1] is 1:
             return True
 
         return False
 
-    # Check if right button of mouse is pressed
     def right_pressed(self):
+        """
+        Returns True if the RIGHT button of
+        mouse is being pressed and False otherwise.
+        """
         if pygame.mouse.get_pressed()[2] is 1:
             return True
 
         return False
 
-    # Get current position of mouse
     def get_position(self):
+        """
+        Returns a tuple with the current position
+        of mouse.
+        """
         return pygame.mouse.get_pos()
 
-    # Set a position to mouse
     def set_position(self, x, y):
+        """
+        Sets the current position of mouse.
+        """
         pygame.mouse.set_pos([x,y])
 
     # Get the position based on the last call of function
     def get_relative_position(self):
+        """
+        Returns a tuple with the current position
+        of mouse based on the last call of the function.
+        """
         return pygame.mouse.get_rel()
 
     # Set visibility of mouse cursor
     def set_visible(self, is_visible):
+        """
+        Sets the mouse cursor visibility.
+        Set it True to be visible, and False to not to be.
+        """
         pygame.mouse.set_visible(is_visible)
 
-    # Check if the mouse is over the game window
     def is_focused(self):
+        """
+        Returns True if mouse is over the game window and False otherwise.
+        """
         if pygame.mouse.get_focused() is 1:
             return True
 
@@ -49,20 +73,28 @@ class Mouse(metaclass=Singleton):
 
     # Get data that compose mouse cursor
     def get_cursor(self):
+        """
+        Returns data that constructs the cursor.
+        """
         return pygame.mouse.get_cursor()
 
-    #
     def set_cursor(size, hotspot, xormasks, andmasks):
+        """
+        """
         pygame.mouse.set_cursor(size, hotspot, xormasks, andmasks)
 
-    # Set an game_object to be your new icon
     def set_custom_cursor(self, game_object):
+        """
+        Sets an game_object to be your new cursor icon.
+        """
         self.set_visible(False)
         position = self.get_position()
 
-
-    # Check if mouse is over a game_object
     def is_over(self, game_object):
+        """
+        Returns True if mouse is over some game_object,
+        otherwise returns False.
+        """
         collider = game_object.collider
         mouse_position_x, mouse_position_y = self.get_position()
 
@@ -75,8 +107,13 @@ class Mouse(metaclass=Singleton):
 
         return False
 
-    # Check if mouse clicked over game_object
     def is_clicked_over(self, game_object):
+        """
+        Returns a dictionary where the keys are the
+        button names and the values are:
+        True if the button was pressed over a
+        game_object or false if not.
+        """
         is_over = self.is_over(game_object)
         button_pressed = {'left': False,
                           'scroll': False,
@@ -90,8 +127,11 @@ class Mouse(metaclass=Singleton):
 
         return button_pressed
 
-    # Drag a game_object changing the position
     def drag(self, button_choice, game_object):
+        """
+        Returns a tuple with mouse x, y coordinates
+        based on button name pressed.
+        """
         buttons = {'left': self.left_pressed(),
                    'scroll': self.scroll_pressed(),
                    'right': self.right_pressed()}
