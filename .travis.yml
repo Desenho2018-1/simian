@@ -24,6 +24,8 @@ install:
 
 before_script:
   - python3 setup.py build
+  - python3 setup.py install
+  - python3 setup.py develop
 
 script:
   - $TASK
@@ -32,7 +34,6 @@ script:
 after_success:
   - codecov
   - bash <(curl -s https://codecov.io/bash)
-  - ./docker-deploy.sh
 
 deploy:
   - provider: pypi
