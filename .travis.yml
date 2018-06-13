@@ -35,6 +35,9 @@ after_success:
   - codecov
   - bash <(curl -s https://codecov.io/bash)
 
+before_deploy:
+  - pip install -Iv pip==8.1.1
+
 deploy:
   - provider: pypi
     user: alaxalves
