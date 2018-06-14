@@ -7,7 +7,7 @@ class SpriteTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(self):
-        self.filename = "image.png"
+        self.filename = "engineer.jpg"
         self.sprite = Sprite(self.filename)
 
     def test_rezise(self):
