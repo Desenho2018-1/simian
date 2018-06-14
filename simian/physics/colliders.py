@@ -49,10 +49,14 @@ class BoxCollider:
         half_width = self.size[0] / 2
         half_height = self.size[1] / 2
 
-        v1 = Vec2(self.position[0] - half_width, self.position[1] + half_height)
-        v2 = Vec2(self.position[0] - half_width, self.position[1] - half_height)
-        v3 = Vec2(self.position[0] + half_width, self.position[1] - half_height)
-        v4 = Vec2(self.position[0] + half_width, self.position[1] + half_height)
+        v1 = Vec2(self.position[0] - half_width, self.position[1] +
+                  half_height)
+        v2 = Vec2(self.position[0] - half_width, self.position[1] -
+                  half_height)
+        v3 = Vec2(self.position[0] + half_width, self.position[1] -
+                  half_height)
+        v4 = Vec2(self.position[0] + half_width, self.position[1] +
+                  half_height)
 
         return [v1, v2, v3, v4]
 

@@ -14,7 +14,8 @@ def main():
     args = parser.parse_args()
 
     if args.option == 'startproject':
-        template_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        template_path = os.path.dirname(os.path.dirname(os.path.dirname(
+                                        os.path.abspath(__file__))))
         cookiecutter(template_path + '/cookiecutter')
     elif args.option == 'run':
         os.system(f'python {args.file}')

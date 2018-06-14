@@ -44,7 +44,7 @@ class Mouse(metaclass=Singleton):
         """
         Sets the current position of mouse.
         """
-        pygame.mouse.set_pos([x,y])
+        pygame.mouse.set_pos([x, y])
 
     # Get the position based on the last call of function
     def get_relative_position(self):
@@ -100,12 +100,16 @@ class Mouse(metaclass=Singleton):
         collider = game_object.collider
         mouse_position_x, mouse_position_y = self.get_position()
 
-        first_point = (collider.position[0] - collider.size[0] / 2 , collider.position[1] - collider.size[1] / 2)
-        second_point = (collider.position[0] + collider.size[0] / 2 , collider.position[1] + collider.size[1] / 2)
+        first_point = (collider.position[0] - collider.size[0] / 2,
+                       collider.position[1] - collider.size[1] / 2)
+        second_point = (collider.position[0] + collider.size[0] / 2,
+                        collider.position[1] + collider.size[1] / 2)
 
-        if ((mouse_position_x >= first_point[0] and mouse_position_x <= second_point[0]) and
-           (mouse_position_y >= first_point[1] and mouse_position_y <= second_point[1])):
-           return True
+        if ((mouse_position_x >= first_point[0] and
+             mouse_position_x <= second_point[0]) and
+            (mouse_position_y >= first_point[1] and
+             mouse_position_y <= second_point[1])):
+            return True
 
         return False
 
@@ -119,13 +123,12 @@ class Mouse(metaclass=Singleton):
         is_over = self.is_over(game_object)
         button_pressed = {'left': False,
                           'scroll': False,
-                          'right':False}
+                          'right': False}
 
         if is_over:
             button_pressed['left'] = self.left_pressed()
             button_pressed['scroll'] = self.scroll_pressed()
             button_pressed['right'] = self.right_pressed()
-
 
         return button_pressed
 

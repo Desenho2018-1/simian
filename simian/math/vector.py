@@ -122,7 +122,7 @@ class Vec2:
             return Vec2(self.x * other[0], self.y * other[1])
         else:
             return Vec2(self.x * other, self.y * other)
-    
+
     # Multiplication
     def __mul__(self, other):
         if isinstance(other, Vec2):

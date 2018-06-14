@@ -59,7 +59,7 @@ def resolve_collision(body_a, body_b, normal):
         print(scalar_impulse)
         impulse = normal * scalar_impulse
 
-        #print(impulse)
+        # print(impulse)
 
         body_a.velocity -= impulse * (1/body_a.mass)
         body_b.velocity += impulse * (1/body_b.mass)

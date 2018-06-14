@@ -15,7 +15,7 @@ class TemplateScene(BaseScene):
 
     def load(self):
         self.keyboard = Keyboard()
-        self.game_objects = [Player(50,50)]
+        self.game_objects = [Player(50, 50)]
 
     def unload(self):
         pass

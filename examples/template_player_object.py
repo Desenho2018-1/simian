@@ -6,7 +6,7 @@ from simian.input.keyboard_manager import Keyboard
 class Player(GameObject):
 
     def __init__(self, x, y):
-        super().__init__(x,y)
+        super().__init__(x, y)
         self.sprite = Sprite("engineer.jpg")
         self.keyboard = Keyboard()
         self.speed = 500
