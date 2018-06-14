@@ -88,7 +88,6 @@ class Mouse(metaclass=Singleton):
         Sets an game_object to be your new cursor icon.
         """
         self.set_visible(False)
-        self.set_cursor((8,8), (4,4), (0,0),(0,0))
         mouse_position = self.get_position()
         game_object.set_x(mouse_position[0])
         game_object.set_y(mouse_position[1])
