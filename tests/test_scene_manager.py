@@ -7,7 +7,7 @@ class SceneManagerTest(unittest.TestCase):
 
     def setUp(self):
         self.scene = TemplateScene('dummy', 1)
-        self.scenes = (self.scene)
+        self.scenes = (self.scene,)
         self.scene_manager = SceneManager()
         self.scene_manager.scene_list = []
         self.scene_manager.current_scene = None
