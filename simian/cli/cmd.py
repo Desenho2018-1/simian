@@ -1,8 +1,6 @@
 import argparse
 import os
 
-from simian.utils.project import create_project
-
 from cookiecutter.main import cookiecutter
 
 
