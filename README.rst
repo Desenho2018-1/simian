@@ -1,12 +1,12 @@
-=====
+======
 Simian
-=====
+======
 
 Simian is a framework thats provides a game engine using pygame.
 
-=====
+==============
 Especification
-=====
+==============
 
 Python: v3.6.5
 pygame: v1.9.3
@@ -33,10 +33,10 @@ Quick Start
 
 **To quit this virtual environment just type:**
 
-`$ deactivate`
+$ deactivate
 
-=====
-PyPI
-=====
+====
+PyPi
+====
 
 A more stable version of the package is in: https://pypi.org/project/simian-engine/

@@ -30,7 +30,7 @@ class Vec2:
         elif key == 1:
             return self.y
         else:
-            raise IndexError(f'Invalid subscript {str(key)} to Vec2')
+            raise IndexError('Invalid subscript {str(key)} to Vec2')
 
     # Generic operator handlers
     def _o2(self, other, f):
@@ -122,7 +122,7 @@ class Vec2:
             return Vec2(self.x * other[0], self.y * other[1])
         else:
             return Vec2(self.x * other, self.y * other)
-    
+
     # Multiplication
     def __mul__(self, other):
         if isinstance(other, Vec2):
@@ -177,7 +177,7 @@ class Vec2:
         return Vec2(-self.x, -self.y)
 
     def __str__(self):
-        return f'Vec2({self.x, self.y})'
+        return Vec2({self.x, self.y})
 
     def dot(self, other):
         return float(self.x * other[0] + self.y * other[1])

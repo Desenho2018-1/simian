@@ -4,6 +4,7 @@ from examples.template_player_object import Player
 
 
 class TemplateScene(BaseScene):
+
     def draw(self, graphics):
         for game_object in self.game_objects:
             game_object.draw(graphics)
@@ -14,7 +15,7 @@ class TemplateScene(BaseScene):
 
     def load(self):
         self.keyboard = Keyboard()
-        self.game_objects = [Player(50,50)]
+        self.game_objects = [Player(50, 50)]
 
     def unload(self):
         pass

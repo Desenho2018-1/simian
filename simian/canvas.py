@@ -28,7 +28,7 @@ class GameCanvas(metaclass=Singleton):
 
     def refresh(self):
         pygame.display.flip()
-        self.screen.fill((0,0,0))
+        self.screen.fill((0, 0, 0))
 
     def get_screen(self):
         """

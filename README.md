@@ -1,6 +1,10 @@
 ## Simian
 
+[![codecov](https://codecov.io/gh/Desenho2018-1/simian/branch/master/graph/badge.svg)](https://codecov.io/gh/Desenho2018-1/simian)
+
 A simple 2D game engine implemented with python, using pygame!
+
+Get to know us better at: https://desenho2018-1.github.io/simian/
 
 ## Especification
 
@@ -21,21 +25,37 @@ A simple 2D game engine implemented with python, using pygame!
 
 2. Then go to our simian folder (where you can see setup.py):
 
+`(games) $ pip3 install -r requirements.txt`
+
 `(games) $ python3 setup.py build`
 
------------------------------------------
 You can also use:
 
-```
-$ docker-compose -f docker/docker-compose.yml up --build -d 
-$ docker exec -it simian bash`
-```
+`$ docker-compose -f docker/docker-compose.yml up --build -d `
 
-or even more simple:
+`$ docker exec -it simian bash`
+
+or get more simple with docker:
 
 `$ make run`
 
-And you'll be inside the simian environment!
+If you're a Vagrant Fanboy, just:
+
+`$ vagrant box add ubuntu/xenial64`
+
+`$ vagrant up`
+
+`$ vagrant ssh`
+
+or get more simple with vagrant:
+
+`$ make v-build`
+
+`$ make v-exec`
+
+-----------------------------------------
+
+And you'll be inside Simian environment!
 
 -------------------------------------------
 

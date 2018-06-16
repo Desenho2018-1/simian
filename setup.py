@@ -9,7 +9,7 @@ here = path.abspath(path.dirname(__file__))
 with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
     README = readme.read()
 
-CLASSIFIERS= [
+CLASSIFIERS = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Natural Language :: Portuguese",
@@ -34,7 +34,7 @@ REQUIRES = [str(ir.req) for ir in INSTALL_REQS]
 setup(
     name='simian_engine',
 
-    version='0.0.1',
+    version='0.0.2',
 
     description='A simple 2D game engine implemented with python!',
 
@@ -66,5 +66,5 @@ setup(
 
     maintainer_email='simiangameengine@gmail.com',
 
-     platforms='any',
+    platforms='any',
 )

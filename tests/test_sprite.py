@@ -1,13 +1,14 @@
 import unittest
 from simian.sprite.sprite import Sprite
+from simian.config import Configuration
 
 
 class SpriteTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(self):
-        self.filename = "image.png"
-        self.sprite = Sprite(self.filename) 
+        self.filename = "engineer.jpg"
+        self.sprite = Sprite(self.filename)
 
     def test_rezise(self):
         current_width = self.sprite.get_width()

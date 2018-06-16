@@ -9,6 +9,7 @@ from simian.canvas import GameCanvas
 from simian.utils.singleton import Singleton
 from simian.scene.scene_manager import SceneManager
 from simian.input.keyboard_manager import Keyboard
+# from simian.config import Configuration
 
 
 NUMBER_OF_FRAMES = 60
@@ -27,6 +28,7 @@ class GameEngine(metaclass=Singleton):
         self.game_canvas = GameCanvas(game_name, window_size)
         self.scene_manager = SceneManager()
         self.keyboard = Keyboard()
+        # self.configuration = Configuration()
 
     def add_scene(self, *args):
         """
@@ -58,11 +60,11 @@ class GameEngine(metaclass=Singleton):
                     exit()
 
             self.scene_manager.current_scene.update(clock.get_time()/1000)
-            
+
             groups = pygame.sprite.OrderedUpdates()
             self.scene_manager.current_scene.draw(groups)
             groups.draw(self.screen)
-            
+
             # Refresh screen
             self.game_canvas.refresh()
 
