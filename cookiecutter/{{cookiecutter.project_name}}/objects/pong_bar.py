@@ -9,16 +9,14 @@ import conf
 
 class PongBar(RigidBody):
 
-    def __init__(self, position):
-        super().__init__(position, 100, BoxCollider(position, (50, 300)))
+    def __init__(self, position, control):
+        super().__init__(position, 0, BoxCollider(position, (71, 296)), 5)
         self.sprite = Sprite(conf.ASSETS + 'bar.jpg')
         self.keyboard = Keyboard()
+        self.control = control
 
     def update(self, time_elapsed):
-        if(self.keyboard.is_key_pressed(Keyboard.DOWN)):
-            self.position += Vec2(0, 20)
-        if(self.keyboard.is_key_pressed(Keyboard.UP)):
-            self.position += Vec2(0, -20)
+        self.position += self.control()*time_elapsed
 
     def draw(self, graphics):
         self.sprite.set_x(self.position.x)
