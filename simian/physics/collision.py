@@ -7,6 +7,9 @@ from math import sqrt
 from simian.math.manifold import Manifold
 from simian.math.vector import Vec2
 
+MAX_VELOCITY = 3000
+MIN_VELOCITY = -3000
+
 
 class CollisionManager:
 
@@ -21,6 +24,7 @@ class CollisionManager:
     def detach(self, observer):
         observer._subjet = None
         self._observers.discard(observer)
+        self._game_objects = []
 
     def _notify(self):
         for observer in self._observers:
@@ -33,8 +37,8 @@ class CollisionManager:
                 manifold = self._detect_collision(self._game_objects[i], self._game_objects[j])
                 if manifold:
                     self._game_objects[i], self._game_objects[j] = self._resolve_collision(manifold)
+                    self._notify()
             index += 1
-        self._notify()
 
     def _detect_collision(self, body_a, body_b):
         """
@@ -62,9 +66,9 @@ class CollisionManager:
             if y_overlap > 0:
                 if x_overlap < y_overlap:
                     if n.x < 0:
-                        normal = Vec2(-1, 0)
-                    else:
                         normal = Vec2(1, 0)
+                    else:
+                        normal = Vec2(-1, 0)
                     penetration = x_overlap
                     return Manifold(body_a, body_b, penetration, normal)
                 else:
@@ -107,5 +111,16 @@ class CollisionManager:
 
             A.velocity -= A_inv_mass * impulse
             B.velocity += B_inv_mass * impulse
+
+            A.velocity.x = MAX_VELOCITY if A.velocity.x > MAX_VELOCITY else A.velocity.x
+            A.velocity.x = MIN_VELOCITY if A.velocity.x < MIN_VELOCITY else A.velocity.x
+            A.velocity.y = MAX_VELOCITY if A.velocity.y > MAX_VELOCITY else A.velocity.y
+            A.velocity.y = MIN_VELOCITY if A.velocity.y < MIN_VELOCITY else A.velocity.y
+
+            B.velocity.x = MAX_VELOCITY if B.velocity.x > MAX_VELOCITY else B.velocity.x
+            B.velocity.x = MIN_VELOCITY if B.velocity.x < MIN_VELOCITY else B.velocity.x
+
+            B.velocity.y = MAX_VELOCITY if B.velocity.y > MAX_VELOCITY else B.velocity.y
+            B.velocity.y = MIN_VELOCITY if B.velocity.y < MIN_VELOCITY else B.velocity.y
 
         return A, B

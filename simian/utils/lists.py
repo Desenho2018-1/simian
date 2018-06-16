@@ -20,4 +20,4 @@ class GameObjectList(Observer, list):
         return hash(list)
 
     def update(self, new_elements):
-        self = new_elements
+        self = GameObjectList(new_elements)

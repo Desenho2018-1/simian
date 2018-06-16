@@ -39,7 +39,7 @@ class BoxCollider:
         self.max, self.min = self._get_max_min()
 
     def _get_max_min(self):
-        return (Vec2(self.position.x - self.size[0]/2,
-                     self.position.y - self.size[1]/2),
-                Vec2(self.position.x + self.size[0]/2,
-                     self.position.y + self.size[1]/2))
+        return (Vec2(self.position.x + self.size[0]/2,
+                     self.position.y + self.size[1]/2),
+                Vec2(self.position.x - self.size[0]/2,
+                     self.position.y - self.size[1]/2))
