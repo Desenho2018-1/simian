@@ -4,7 +4,7 @@ All objects that react with game physics
 should be represented by this classes.
 """
 
-from simian.gameobject.game_object import GameObject
+from simian.object import GameObject
 from simian.math.vector import Vec2
 
 

@@ -2,7 +2,7 @@ from simian.physics.bodies import RigidBody
 from simian.physics.colliders import BoxCollider
 from simian.math.vector import Vec2
 from simian.input.keyboard_manager import Keyboard
-from simian.sprite.sprite import Sprite
+from simian.sprite import Sprite
 
 import conf
 

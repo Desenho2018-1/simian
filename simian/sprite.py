@@ -33,10 +33,10 @@ class Sprite(pygame.sprite.Sprite):
         return self.rect.y
 
     def set_x(self, x):
-        self.rect.x = x
+        self.rect.x = x - self.get_width() / 2
 
     def set_y(self, y):
-        self.rect.y = y
+        self.rect.y = y - self.get_height() / 2
 
     def get_width(self):
         return self.rect.width
