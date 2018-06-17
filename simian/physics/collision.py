@@ -4,128 +4,123 @@ manage rigid body collisions.
 """
 
 from math import sqrt
+from simian.math.manifold import Manifold
 from simian.math.vector import Vec2
 
-
-def detect_collision(body_a, body_b):
-    """
-    Verify if two rigid bodies
-    are colliding.
-    """
-    edges = body_a.collider.edges
-    edges += body_b.collider.edges
-
-    orthogonals = [_orthogonal(e) for e in edges]
-
-    push_vectors = []
-    for orthogonal in orthogonals:
-        separates, push_vec = _is_separating_axis(orthogonal,
-                                                  body_a.collider.vertices,
-                                                  body_b.collider.vertices)
-
-        if separates:
-            # Collision not detected
-            return None
-        else:
-            push_vectors.append(push_vec)
-
-    # smallest push vector
-    minimal_push_vec = min(push_vectors, key=(lambda v: v.dot(v)))
-
-    # assert minimal push vector push body_a away from body_b
-    d = _centers_displacement(body_a.collider.vertices,
-                              body_b.collider.vertices)
-
-    # if it's the same direction, invert
-    if d.dot(minimal_push_vec) > 0:
-        minimal_push_vec = -minimal_push_vec
-
-    return minimal_push_vec
+MAX_VELOCITY = 3000
+MIN_VELOCITY = -3000
 
 
-def resolve_collision(body_a, body_b, normal):
-    """
-    Resolve the collision between
-    two rigid bodies.
-    """
-    relative_velocity = body_b.velocity - body_a.velocity
-    relative_velocity_normal = relative_velocity.dot(normal)
-    if relative_velocity_normal > 0:
-        e = sqrt(body_a.restitution + body_b.restitution)
+class CollisionManager:
 
-        scalar_impulse = -(1 * e) * relative_velocity_normal
-        scalar_impulse /= 1/body_a.mass + 1/body_b.mass
+    def __init__(self):
+        self._observers = set()
 
-        print(scalar_impulse)
-        impulse = normal * scalar_impulse
+    def attach(self, observer):
+        observer._subject = self
+        self._observers.add(observer)
+        self._game_objects = observer
 
-        # print(impulse)
+    def detach(self, observer):
+        observer._subjet = None
+        self._observers.discard(observer)
+        self._game_objects = []
 
-        body_a.velocity -= impulse * (1/body_a.mass)
-        body_b.velocity += impulse * (1/body_b.mass)
+    def _notify(self):
+        for observer in self._observers:
+            observer.update(self._game_objects)
 
-    return body_a, body_b
+    def manage_collision(self):
+        index = 1
+        for i in range(len(self._game_objects)):
+            for j in range(index, len(self._game_objects)):
+                manifold = self._detect_collision(self._game_objects[i], self._game_objects[j])
+                if manifold:
+                    self._game_objects[i], self._game_objects[j] = self._resolve_collision(manifold)
+                    self._notify()
+            index += 1
 
+    def _detect_collision(self, body_a, body_b):
+        """
+        Verify if two rigid bodies
+        are colliding.
+        """
+        A = body_a.collider
+        B = body_b.collider
 
-def _centers_displacement(vertices1, vertices2):
-    """
-    Return the displacement between the geometric center
-    of vertices of a polygon and another.
-    """
-    sum1_x = 0
-    sum1_y = 0
+        # vector from a to b
+        n = A.position - B.position
 
-    sum2_x = 0
-    sum2_y = 0
+        A_extent = (A.max.x - A.min.x) / 2
+        B_extent = (B.max.x - B.min.x) / 2
 
-    for v in vertices1:
-        sum1_x += v.x
-        sum1_y += v.y
+        x_overlap = A_extent + B_extent - abs(n.x)
 
-    for v in vertices2:
-        sum2_x += v.x
-        sum2_y += v.y
+        if x_overlap > 0:
+            A_extent = (A.max.y - A.min.y) / 2
+            B_extent = (B.max.y - B.min.y) / 2
 
-    center_1 = Vec2(sum1_x/len(vertices1), sum1_y/len(vertices1))
-    center_2 = Vec2(sum2_x/len(vertices2), sum2_y/len(vertices2))
+            y_overlap = A_extent + B_extent - abs(n.y)
 
-    return center_2 - center_1
+            # SAT test on y axis
+            if y_overlap > 0:
+                if x_overlap < y_overlap:
+                    if n.x < 0:
+                        normal = Vec2(1, 0)
+                    else:
+                        normal = Vec2(-1, 0)
+                    penetration = x_overlap
+                    return Manifold(body_a, body_b, penetration, normal)
+                else:
+                    if n.y < 0:
+                        normal = Vec2(0, 1)
+                    else:
+                        normal = Vec2(0, -1)
+                    penetration = y_overlap
+                    return Manifold(body_a, body_b, penetration, normal)
 
+    def _resolve_collision(self, manifold):
+        """
+        Resolve the collision between
+        two rigid bodies.
+        """
+        A = manifold.obj_a
+        B = manifold.obj_b
 
-def _orthogonal(vector):
-    """
-    Return a 90 degree clockwise rotation
-    of the given vector.
-    """
-    return Vec2(-vector.y, vector.x)
+        # relative velocity
+        rv = B.velocity - A.velocity
 
+        # relative velocity in terms of normal direction
+        rv_n = rv.dot(manifold.normal)
 
-def _is_separating_axis(orthogonal, vertices1, vertices2):
-    """
-    Return True and the push vector if orthogonal
-    is a separating axis of vertices1 and vertices2.
-    Otherwise, return False and None.
-    """
-    min1, max1 = float('+inf'), float('-inf')
-    min2, max2 = float('+inf'), float('-inf')
+        # resolve only if velocities are not separating
+        if rv_n <= 0:
+            A_inv_mass = 0 if A.mass == 0 else 1/A.mass
+            B_inv_mass = 0 if B.mass == 0 else 1/B.mass
 
-    for v in vertices1:
-        projection = v.dot(orthogonal)
+            # calculate restitution
+            e = min(A.restitution, B.restitution)
 
-        min1 = min(min1, projection)
-        max1 = max(max1, projection)
+            # calculate impulse scalar
+            j = -(1 + e) * rv_n
 
-    for v in vertices2:
-        projection = v.dot(orthogonal)
+            j /= A_inv_mass + B_inv_mass
 
-        min2 = min(min2, projection)
-        max2 = max(max2, projection)
+            # apply impulse
+            impulse = j * manifold.normal
 
-    if max1 >= min2 and max2 >= min1:
-        d = min(max2 - min1, max1 - min2)
+            A.velocity -= A_inv_mass * impulse
+            B.velocity += B_inv_mass * impulse
 
-        d_over_orthogonal_squared = d / orthogonal.dot(orthogonal) + 1e-10
-        push_vec = orthogonal * d_over_orthogonal_squared
-        return False, push_vec
-    else:
-        return True, None
+            A.velocity.x = MAX_VELOCITY if A.velocity.x > MAX_VELOCITY else A.velocity.x
+            A.velocity.x = MIN_VELOCITY if A.velocity.x < MIN_VELOCITY else A.velocity.x
+            A.velocity.y = MAX_VELOCITY if A.velocity.y > MAX_VELOCITY else A.velocity.y
+            A.velocity.y = MIN_VELOCITY if A.velocity.y < MIN_VELOCITY else A.velocity.y
+
+            B.velocity.x = MAX_VELOCITY if B.velocity.x > MAX_VELOCITY else B.velocity.x
+            B.velocity.x = MIN_VELOCITY if B.velocity.x < MIN_VELOCITY else B.velocity.x
+
+            B.velocity.y = MAX_VELOCITY if B.velocity.y > MAX_VELOCITY else B.velocity.y
+            B.velocity.y = MIN_VELOCITY if B.velocity.y < MIN_VELOCITY else B.velocity.y
+
+        return A, B

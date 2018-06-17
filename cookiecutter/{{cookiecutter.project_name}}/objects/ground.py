@@ -1,26 +1,24 @@
 from simian.physics.bodies import RigidBody
 from simian.physics.colliders import BoxCollider
 from simian.math.vector import Vec2
-from simian.sprite import Sprite
 from simian.input.keyboard_manager import Keyboard
+from simian.sprite import Sprite
 
 import conf
 
 
-class Ball(RigidBody):
+class Ground(RigidBody):
 
     def __init__(self, position):
-        super().__init__(position, 1, BoxCollider(position, (27, 26)), 1.2)
+        super().__init__(position, 0, BoxCollider(position, (296, 71)), 5)
+        self.sprite = Sprite(conf.ASSETS + 'bar2.jpg')
         self.keyboard = Keyboard()
-        self.sprite = Sprite(conf.ASSETS + 'ball.png')
 
     def update(self, time_elapsed):
-        if(self.keyboard.is_key_pressed(Keyboard.RETURN)):
-            self.velocity = Vec2(-70, 70)
-
         self.position += self.velocity*time_elapsed
 
     def draw(self, graphics):
         self.sprite.set_x(self.position.x)
         self.sprite.set_y(self.position.y)
+
         graphics.add(self.sprite)

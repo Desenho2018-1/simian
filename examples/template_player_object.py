@@ -1,6 +1,8 @@
-from simian.object import GameObject
+from simian.physics.bodies import RigidBody
+from simian.physics.colliders import BoxCollider
 from simian.sprite.sprite import Sprite
 from simian.input.keyboard_manager import Keyboard
+from simian.math.vector import Vec2
 
 
 class Player(GameObject):
@@ -9,17 +11,16 @@ class Player(GameObject):
         super().__init__(x, y)
         self.sprite = Sprite("engineer.jpg")
         self.keyboard = Keyboard()
-        self.speed = 500
 
     def update(self, time_elapsed):
         if(self.keyboard.is_key_pressed(Keyboard.RIGHT)):
-            self.position.x += self.speed*time_elapsed
+            self.velocity = Vec2(100, 0)
 
         if(self.keyboard.is_key_pressed(Keyboard.LEFT)):
-            self.position.x -= self.speed*time_elapsed
+            self.velocity = Vec2(-100, 0)
 
         if(self.keyboard.is_key_pressed(Keyboard.DOWN)):
-            self.position.y += self.speed*time_elapsed
+            self.velocity = Vec2(0, 100)
 
         if(self.keyboard.is_key_pressed(Keyboard.UP)):
             self.position.y -= self.speed*time_elapsed

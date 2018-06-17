@@ -13,13 +13,12 @@ class BoxCollider:
     of a rigid body, is used to perform
     AABB collision detection.
     """
-    __slots__ = ['_position', '_size', 'vertices', 'edges']
+    __slots__ = ['_position', '_size', 'max', 'min']
 
     def __init__(self, position, size):
-        self._position = position
+        self._position = Vec2(position[0], position[1])
         self._size = size
-        self.vertices = self._get_vertices()
-        self.edges = self._get_edges()
+        self.max, self.min = self._get_max_min()
 
     @property
     def position(self):
@@ -28,8 +27,7 @@ class BoxCollider:
     @position.setter
     def position(self, new_pos):
         self._position = new_pos
-        self.vertices = self._get_vertices()
-        self.edges = self._get_edges()
+        self.max, self.min = self._get_max_min()
 
     @property
     def size(self):
@@ -38,39 +36,10 @@ class BoxCollider:
     @size.setter
     def size(self, new_size):
         self._size = new_size
-        self.vertices = self._get_vertices()
-        self.edges = self._get_edges()
+        self.max, self.min = self._get_max_min()
 
-    def _get_vertices(self):
-        """
-        Return a list with all vertices
-        ordered in counterclockwise direction.
-        """
-        half_width = self.size[0] / 2
-        half_height = self.size[1] / 2
-
-        v1 = Vec2(self.position[0] - half_width, self.position[1] +
-                  half_height)
-        v2 = Vec2(self.position[0] - half_width, self.position[1] -
-                  half_height)
-        v3 = Vec2(self.position[0] + half_width, self.position[1] -
-                  half_height)
-        v4 = Vec2(self.position[0] + half_width, self.position[1] +
-                  half_height)
-
-        return [v1, v2, v3, v4]
-
-    def _get_edges(self):
-        """
-        Return the vectors that represent
-        all edges of the box collider with
-        the given vertices.
-        """
-        edges = []
-        N = len(self.vertices)
-
-        for i in range(N):
-            edge = self.vertices[(i + 1) % N] - self.vertices[i]
-            edges.append(edge)
-
-        return edges
+    def _get_max_min(self):
+        return (Vec2(self.position.x + self.size[0]/2,
+                     self.position.y + self.size[1]/2),
+                Vec2(self.position.x - self.size[0]/2,
+                     self.position.y - self.size[1]/2))
