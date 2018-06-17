@@ -6,6 +6,7 @@ and manage texts on screens.
 import pygame
 from simian.engine import GameEngine
 
+
 class Text:
     """
     This class represents a simian
@@ -59,7 +60,6 @@ class Text:
     def italic(self, boolean):
         self._styles['italic'] = boolean
         self._font.set_italic(boolean)
-
 
     """
         Methods for check if style is applied to text
