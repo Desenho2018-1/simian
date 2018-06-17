@@ -14,14 +14,14 @@ class Text:
     """
     def __init__(self, content, size, font='default'):
         pygame.font.init()
-        self.content = content
+        self.content = str(content)
         self.size = size
         self._font = pygame.font.SysFont(font, size)
         self._styles = {'underline': False, 'bold': False, 'italic': False}
 
     @property
     def font(self):
-        return self.font
+        return self._font
 
     @font.setter
     def font(self, font):
