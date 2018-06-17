@@ -52,22 +52,16 @@ class SceneManagerTest(unittest.TestCase):
         self.scene_manager.add_scene((next_scene,))
 
         self.scene_manager.current_scene = self.scene
-
+        self.scene_manager.set_next_scene("dummy_two")
         self.scene_manager.load_next_scene()
 
         self.assertEqual(self.scene_manager.current_scene, next_scene)
-
-    def test_load_next_scene_after_last(self):
-        self.scene_manager.add_scene(self.scenes)
-        self.scene_manager.load_next_scene()
-
-        self.assertRaises(ValueError, self.scene_manager.load_next_scene)
 
     def test_load_unexistent_next_scene(self):
         with self.assertRaises(ValueError) as error:
             self.scene_manager.load_next_scene()
         exception = str(error.exception)
-        self.assertEqual(exception, "The current scene is the last scene")
+        self.assertEqual(exception, "This scene doesn't exist")
 
     def test_load_scene(self):
         self.scene_manager.add_scene(self.scenes)
