@@ -13,13 +13,12 @@ class TemplateScene(BaseScene):
     def update(self, time_elapsed):
         for game_object in self.game_objects:
             game_object.update(time_elapsed)
-        
+
         # print(self.game_objects[0].collider.position)
         # print(self.game_objects[1].collider.position)
         print('\nCOLIDIU\n')
         self.game_objects[0].position += self.game_objects[0].velocity*time_elapsed
         self.game_objects[1].position += self.game_objects[1].velocity*time_elapsed
-
 
     def load(self):
         self.keyboard = Keyboard()

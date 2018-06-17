@@ -5,6 +5,7 @@ from simian.input.keyboard_manager import Keyboard
 from simian.math.vector import Vec2
 from simian.object import GameObject
 
+
 class Player(GameObject):
 
     def __init__(self, x, y):
@@ -23,7 +24,7 @@ class Player(GameObject):
             self.velocity = Vec2(0, 100)
 
         if(self.keyboard.is_key_pressed(Keyboard.UP)):
-            self.velocity = Vec2(0,-100)
+            self.velocity = Vec2(0, -100)
 
     def draw(self, graphics):
         self.sprite.set_x(self.position.x)
