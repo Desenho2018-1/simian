@@ -4,7 +4,7 @@ and manage texts on screens.
 """
 
 import pygame
-
+from simian.engine import GameEngine
 
 class Text:
     """
@@ -34,13 +34,13 @@ class Text:
     def styles(self):
         return self._styles
 
-    def draw(self, surface, position, soft_edges=True, color=(255, 255, 255)):
+    def draw(self, position, soft_edges=True, color=(255, 255, 255)):
         """
         Render the text content with the given
         color, on the given surface and in the given position.
         """
         render = self._font.render(self.content, soft_edges, color)
-        surface.blit(render, position)
+        self.canvas = GameEngine().game_canvas.get_screen().blit(render, position)
 
     def available_fonts(self):
         """
