@@ -15,7 +15,7 @@ env:
     - secure: ByMFGg70bJ23aoJlt/NFqeGoddkXGK66kwqtuIK+FJGSglqPM4QbgrUr8d1Cz+bltQhnLeHZ4/ahmCjh93rfeowqcoiwyRXgkJ/tj3aARGAZLL99vZqxnelx3g2DEtJ/VinqYw/MNZ7WRZTa5EaLR6D+fsIKQJQO46w4G9I3Ivzck/hTKoFbE6hv5Jua2gtvtlM/MEMblS+gQU7m8wrXWM1zqjTBP7MR82lm+JTqXFoYAHIvOYPDQzv11VH0lR1NRbYi2//V7lig2Ro4vHs4JWCHHOlyiM4cq/RCbmxwKdY7uJej927xSmseUt5BLCkGFnWzDqkMxIPDoP5QPWU/eMmIFCbSA32H5XgW4zF+gjI7mR6pH0/wzfwVuhCtN/YksuXsbvNJa90EEFsXBS5fdQtDQmRr7WF/YtwudJG1eryiyzNbsC07//NRS9WChrXWqPzvCTwjyeNcY1fvEvUZWWUNajWX25U17iYPHp7sKbcn/vL1IeI1r9d95EZK1HlCAigEO186nm2Wx8QXVhaviE27LjxlYpD6/Y8+qBGoSCEj9YRP5B3gX8v2HldZsoTilgah/aeRCmAIb+ZQ2cbKRLYPiBwbgvsBWsy9An6vYVYFCuQObbEf/tm5sGARpnpAVeQ/q2H/bwV7wsR7nJGVv1uVx7WagmEFZMhRWqibH0o= #DOCKER_PASSWORD
   matrix:
     - TASK="pytest --cov=./simian"
-    - TASK="pep8 ----max-line-length=90 --show-source --show-pep8 *.py */*.py */**/*.py"
+    - TASK="pep8 --max-line-length=90 --show-source --show-pep8 *.py */*.py */**/*.py"
 
 install:
   - sudo apt-get install alsa-base alsa-utils pulseaudio
