@@ -1,4 +1,4 @@
-from simian.scene.base_scene import BaseScene
+from simian.scene.base_scene import BaseScene, State
 from simian.utils.singleton import Singleton
 
 
@@ -6,7 +6,7 @@ class SceneManager(metaclass=Singleton):
 
     def __init__(self):
         self.current_scene = None
-
+        self.next_scene = None
         self.scene_list = []
 
     def add_scene(self, *args):
@@ -20,6 +20,14 @@ class SceneManager(metaclass=Singleton):
                 else:
                     raise ValueError(
                         "This scene [" + scene.name + "] already exists")
+ 
+    def set_next_scene(self, scene_name):
+        next_scene = self.find_scene(scene_name)
+
+        if(next_scene):
+            self.next_scene = next_scene
+        else:
+            raise ValueError("Can't set next scene ["+scene_name+"], scene not found.")
 
     def remove_scene(self, scene_name):
         scene_to_remove = self.find_scene(scene_name)
@@ -33,24 +41,35 @@ class SceneManager(metaclass=Singleton):
             self.scene_list.remove(scene_to_remove)
 
     def load_next_scene(self):
-        scene_list_length = len(self.scene_list)
-        if(self.current_scene):
-            next_scene_index = self.scene_list.index(self.current_scene) + 1
-        else:
-            next_scene_index = 0
-        # Check if the current scene is the last scene of the game
-        if(next_scene_index < scene_list_length):
-            self.load_scene(self.scene_list[next_scene_index].name)
-        else:
-            raise ValueError("The current scene is the last scene")
+        if(self.next_scene):
+            self.load_scene(self.next_scene.name)
+        else:            
+            raise ValueError("No next scene to load!")
 
     def load_scene(self, scene_name):
         scene = self.find_scene(scene_name)
 
         if(scene is not None):
+            if(self.current_scene):
+                self.current_scene.unload()
             self.current_scene = scene
+            self.current_scene.state = State.STARTED
             self.current_scene.load()
-
+ 
+    def update(self, time_elapsed):
+        if(self.current_scene):
+            self.current_scene.update(time_elapsed)
+        else:
+            raise ValueError("Scene was not set, can't update.")
+ 
+    def draw(self, graphics):
+        if(self.current_scene):
+            self.current_scene.draw(graphics)
+            if(self.current_scene.state == State.FINISHED):
+                self.load_next_scene()
+        else:
+            raise ValueError("Scene was not set, can't draw.")
+ 
     def is_scene_on_list(self, scene_name):
         try:
             self.find_scene(scene_name)

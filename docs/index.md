@@ -255,6 +255,59 @@ Referências
 
 -------------------------------------------------------------------------------------------------
 
+# Elicitação de Requisitos
+
+| Autor | Data |
+|-------|------|
+| Álax Alves | 15/06 |
+
+## O que é Elicitação?
+
+O dicionário nos diz que _Elicitar_ consiste em descobrir, tornar explícito, obter o máximo de informações para o conhecimento do objeto em questão. De modo que, cabe a elicitação, em conjunto a outras técnicas, a tarefa de identificar os fatos que compõem os requisitos do sistema, de forma a prover o mais correto e mais completo entendimento do que é demandado daquele software.
+
+## Elicitação
+
+'A Elicitação de Requisitos é uma fase muito importante em qualquer projeto de desenvolvimento de software, pois se elaborada de maneira incorreta, todo o projeto estará comprometido. É importante, pois é nesse momento que identificamos e definimos a estratégia de desenvolvimento do software.' - Thiago Pereira, iMasters.
+
+## Elicitação dentro do Simian
+
+Tomando como base a importância da Elicitação de Requisitos descrita no tópico anterior, como grupo decidimos planejar uma semana de elicitação, mas de maneira que fossem totalmente iterativas e incrementais - premissa do [Manifesto Ágil](http://www.manifestoagil.com.br/).
+
+A estratégia adotada pelo time foi que faríamos reuniões não-presenciais que utilizariam a abordagem [Design Thinking](https://www.sebrae.com.br/sites/PortalSebrae/artigos/entenda-o-design-thinking,369d9cb730905410VgnVCM1000003b74010aRCRD), assim nessas reuniões - que são totalmente informais - avaliaríamos quais técnicas foram mais positivas e quais não agregaram tanto ao contexto atual do time.
+
+## Resultados
+
+Os resultados de cada tarefa pode ser acompanhado abaixo:
+
+## Relatório Descritivo - Planejamento
+
+Reunião do time de Elicitação a fim de conhecer as fases da abordagem Design Thinking. Constata-se que é uma abordagem bastante valiosa, buscando a solução de problemas de forma coletiva e também colaborativa, em uma perspectiva bastante empatica com os stakeholders. No Design Thinking(DT) as pessoas são colocadas no centro de desenvolvimento do produto – não somente o consumidor final, mas todos os envolvidos na ideia.
+
+Essa reunião foi proposta para que ocorresse de maneira cíclica,  priorizar as informações que mais agregam através da técnica de _MoSCoW_.
+
+Basicamente, essa primeira reunião foi para que houvesse o planejamento das técnicas que utilizaríamos, priorizando as que mais fariam sentido para o nosso contexto atual.
+
+### Brainstorming
+
+_Brainstorming_ é uma dinâmica em grupo, usada em várias empresas, start-ups, projetos e etc como uma técnica para resolver problemas específicos, para desenvolver novas ideias ou projetos, para juntar informação e para estimular o pensamento criativo. É um processo bastante comum realizado em sessões, onde um grupo de pessoas se reúne e expressa seus pensamentos e ideias para que possam chegar a um consenso ou até mesmo novos conceitos, gerando ideias inovadoras.
+
+Em nosso projeto, os requisitos coletados previamente seriam utilizados por cada membro do time para que possam propor possíveis novas funcionalidades para o framework Simian, essas proposições serão realizadas através de uma sessão de BrainStorming. Porém, não só novas funcionalidades mas também soluções e estratégias de implementação.
+
+### MoSCoW - Priorização
+
+MoSCoW é uma técnica de priorização de requisitos muito conhecida na qual se elabora uma tabela capaz de mostrar quais requisitos são prioritários e o por quê. Nessa técnica cada item verificado é atribuído a uma das letras M, S, C ou W, de modo que, a letra M vem da palavra *Must*(Deve ter), S vem de *Should*(Deveria ter), C representa *Could*(Poderia ter) e W que vem de *Want*(Interessante ter). Os requisitos atribuídos a M são os mais prioritários da aplicação, seguidos pelos atribuídos a S, C e por último, de prioridade muito baixa, os requisitos de W. O grupo escolheu a técnica pelo fato de ser simples, de fácil compreensão e de boa usabilidade, sendo que foi considerado que as vantagens da técnica são interessantes para o objetivo de priorização perseguido.
+
+|Prioridade|Id|Descrição|Comentários|Valor do Negócio|
+|----------|:-----:|:-----:|:-----:|:-----:|
+|Alta|1| | | |
+
+### Referências
+
+- [Elicitação e Análise de Requisitos](http://www.univasf.edu.br/~ricardo.aramos/disciplinas/ESI2009_2/Aula10.pdf)
+- [Elicitação de requisitos e suas técnicas](https://imasters.com.br/artigo/18032/gerencia-de-projetos/elicitacao-de-requisitos-e-suas-tecnicas/?trace=1519021197&source=single)
+
+-------------------------------------------------------------------------------------------------
+
 # Diagramação
 
 |  Autor | Data  |   

@@ -1,9 +1,16 @@
+"""
+Keyboard classes used to manage
+user keyboard input.
+"""
 import pygame
 from simian.utils.singleton import Singleton
 
 
-class Keyboard (metaclass=Singleton):
-
+class Keyboard(metaclass=Singleton):
+    """
+    Class that represent a computer keyboard
+    with representation of 92 keys.
+    """
     BACKSPACE = pygame.K_BACKSPACE
     TAB = pygame.K_TAB
     CLEAR = pygame.K_CLEAR
@@ -98,6 +105,8 @@ class Keyboard (metaclass=Singleton):
     ALT_RIGHT = pygame.K_RALT
     ALT_LEFT = pygame.K_LALT
 
-
-def is_key_pressed(self, key):
-    return pygame.key.get_pressed()[key]
+    def is_key_pressed(self, key):
+        """
+        Return if the given key was pressed.
+        """
+        return pygame.key.get_pressed()[key]

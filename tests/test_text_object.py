@@ -1,5 +1,4 @@
-
-from simian.text.text_object import TextObject
+from simian.text_obj.text_object import TextObject
 import unittest
 import pygame
 

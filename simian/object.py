@@ -6,16 +6,24 @@ All objects in a game should be represented by this classes.
 from simian.math.vector import Vec2
 
 
-class GameObject(object):
+class GameObject:
     """
     The base GameObject of Simian Engine. A game object has
     a position that defines his cordinates (x, y) in a 2D space
     and also has a draw and a update method.
     """
-    __slots__ = ['position']
+    __slots__ = ['_position']
 
     def __init__(self, x=None, y=None):
-        self.position = Vec2(x, y)
+        self._position = Vec2(x, y)
+
+    @property
+    def position(self):
+        return self._position
+
+    @position.setter
+    def position(self, new_pos):
+        self._position = new_pos
 
     def update(self):
         """
