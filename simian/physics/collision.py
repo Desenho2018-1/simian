@@ -34,9 +34,11 @@ class CollisionManager:
         index = 1
         for i in range(len(self._game_objects)):
             for j in range(index, len(self._game_objects)):
-                manifold = self._detect_collision(self._game_objects[i], self._game_objects[j])
+                manifold = self._detect_collision(
+                    self._game_objects[i], self._game_objects[j])
                 if manifold:
-                    self._game_objects[i], self._game_objects[j] = self._resolve_collision(manifold)
+                    self._game_objects[i] = self._resolve_collision(manifold)[0]
+                    self._game_objects[j] = self._resolve_collision(manifold)[1]
                     self._notify()
             index += 1
 

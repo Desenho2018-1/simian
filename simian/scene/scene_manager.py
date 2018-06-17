@@ -20,14 +20,15 @@ class SceneManager(metaclass=Singleton):
                 else:
                     raise ValueError(
                         "This scene [" + scene.name + "] already exists")
- 
+
     def set_next_scene(self, scene_name):
         next_scene = self.find_scene(scene_name)
 
         if(next_scene):
             self.next_scene = next_scene
         else:
-            raise ValueError("Can't set next scene ["+scene_name+"], scene not found.")
+            raise ValueError("Can't set next scene ["+scene_name+"], \
+                              scene not found.")
 
     def remove_scene(self, scene_name):
         scene_to_remove = self.find_scene(scene_name)
@@ -43,7 +44,7 @@ class SceneManager(metaclass=Singleton):
     def load_next_scene(self):
         if(self.next_scene):
             self.load_scene(self.next_scene.name)
-        else:            
+        else:
             raise ValueError("No next scene to load!")
 
     def load_scene(self, scene_name):
@@ -55,13 +56,13 @@ class SceneManager(metaclass=Singleton):
             self.current_scene = scene
             self.current_scene.state = State.STARTED
             self.current_scene.load()
- 
+
     def update(self, time_elapsed):
         if(self.current_scene):
             self.current_scene.update(time_elapsed)
         else:
             raise ValueError("Scene was not set, can't update.")
- 
+
     def draw(self, graphics):
         if(self.current_scene):
             self.current_scene.draw(graphics)
@@ -69,7 +70,7 @@ class SceneManager(metaclass=Singleton):
                 self.load_next_scene()
         else:
             raise ValueError("Scene was not set, can't draw.")
- 
+
     def is_scene_on_list(self, scene_name):
         try:
             self.find_scene(scene_name)
