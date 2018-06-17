@@ -16,9 +16,13 @@ class MainScene(BaseScene):
         for game_object in self.game_objects:
             game_object.draw(graphics)
         if(self.game_end):
-            self.game_text.draw(GameEngine().game_canvas.get_screen(),(400,300))
-            self.game_text2.draw(GameEngine().game_canvas.get_screen(),(400,350))
+            self.game_text.draw((400,300))
+            self.game_text2.draw((400,350))
 
+        if(self.game_start):
+            self.game_text2.draw((400,350))
+            if(self.ball.moving):
+                self.game_start = False
     def update(self, time_elapsed):
         self.collision_manager.manage_collision()
         for g in self.game_objects:
@@ -40,6 +44,7 @@ class MainScene(BaseScene):
         self.keyboard = Keyboard()
         self.ball = Ball((350, 100))
         self.game_end = False
+        self.game_start = True
         self.game_text2 = Text("Pressione enter para começar", 24)
         self.game_objects = GameObjectList(
             self.ball,
