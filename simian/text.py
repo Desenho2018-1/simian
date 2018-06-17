@@ -4,7 +4,7 @@ and manage texts on screens.
 """
 
 import pygame
-
+from simian.engine import GameEngine
 
 class Text:
     """
@@ -13,14 +13,15 @@ class Text:
     that can be drawn to the screen.
     """
     def __init__(self, content, size, font='default'):
-        self.content = content
+        pygame.font.init()
+        self.content = str(content)
         self.size = size
-        self._font = pygame.SysFont(font, size)
+        self._font = pygame.font.SysFont(font, size)
         self._styles = {'underline': False, 'bold': False, 'italic': False}
 
     @property
     def font(self):
-        return self.font
+        return self._font
 
     @font.setter
     def font(self, font):
@@ -33,13 +34,13 @@ class Text:
     def styles(self):
         return self._styles
 
-    def draw(self, surface, position, soft_edges=True, color=(255, 255, 255)):
+    def draw(self, position, soft_edges=True, color=(255, 255, 255)):
         """
         Render the text content with the given
         color, on the given surface and in the given position.
         """
         render = self._font.render(self.content, soft_edges, color)
-        surface.blit(render, position)
+        self.canvas = GameEngine().game_canvas.get_screen().blit(render, position)
 
     def available_fonts(self):
         """
@@ -58,3 +59,16 @@ class Text:
     def italic(self, boolean):
         self._styles['italic'] = boolean
         self._font.set_italic(boolean)
+
+
+    """
+        Methods for check if style is applied to text
+    """
+    def is_underline(self):
+        return self.styles['underline']
+
+    def is_bold(self):
+        return self.styles['bold']
+
+    def is_italic(self):
+        return self.styles['italic']
