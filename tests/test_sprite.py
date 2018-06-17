@@ -1,5 +1,5 @@
 import unittest
-from simian.sprite.sprite import Sprite
+from simian.sprite import Sprite
 from simian.config import Configuration
 
 
@@ -30,7 +30,7 @@ class SpriteTest(unittest.TestCase):
     def test_get_x(self):
         self.sprite.set_x(100)
 
-        self.assertEqual(self.sprite.get_x(), 100)
+        self.assertEqual(self.sprite.get_x(), 99.5)
 
     def test_set_y(self):
         self.sprite.set_y(200)
@@ -40,4 +40,4 @@ class SpriteTest(unittest.TestCase):
     def test_get_y(self):
         self.sprite.set_y(200)
 
-        self.assertEqual(self.sprite.get_y(), 200)
+        self.assertEqual(self.sprite.get_y(), 199.5)

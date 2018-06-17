@@ -1,9 +1,9 @@
 from simian.physics.bodies import RigidBody
 from simian.physics.colliders import BoxCollider
-from simian.sprite.sprite import Sprite
+from simian.sprite import Sprite
 from simian.input.keyboard_manager import Keyboard
 from simian.math.vector import Vec2
-
+from simian.object import GameObject
 
 class Player(GameObject):
 
@@ -23,7 +23,7 @@ class Player(GameObject):
             self.velocity = Vec2(0, 100)
 
         if(self.keyboard.is_key_pressed(Keyboard.UP)):
-            self.position.y -= self.speed*time_elapsed
+            self.velocity = Vec2(0,-100)
 
     def draw(self, graphics):
         self.sprite.set_x(self.position.x)
