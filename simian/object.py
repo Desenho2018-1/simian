@@ -12,10 +12,11 @@ class GameObject:
     a position that defines his cordinates (x, y) in a 2D space
     and also has a draw and a update method.
     """
-    __slots__ = ['_position']
+    __slots__ = ['_position', 'is_active']
 
     def __init__(self, x=None, y=None):
         self._position = Vec2(x, y)
+        self.is_active = True
 
     @property
     def position(self):
@@ -48,4 +49,5 @@ class GameObject:
         """
         Clone the current object for better creation management.
         """
+
         return self
