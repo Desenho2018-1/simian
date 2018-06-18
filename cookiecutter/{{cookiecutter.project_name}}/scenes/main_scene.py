@@ -16,18 +16,19 @@ class MainScene(BaseScene):
         for game_object in self.game_objects:
             game_object.draw(graphics)
         if(self.game_end):
-            self.game_text.draw((400,300))
-            self.game_text2.draw((400,350))
+            self.game_text.draw((400, 300))
+            self.game_text2.draw((400, 350))
 
         if(self.game_start):
-            self.game_text2.draw((400,350))
+            self.game_text2.draw((400, 350))
             if(self.ball.moving):
                 self.game_start = False
+
     def update(self, time_elapsed):
         self.collision_manager.manage_collision()
         for g in self.game_objects:
             g.update(time_elapsed)
-        
+
         if self.ball.position.x > 800:
             self.game_end = True
             self.game_text = Text("Player 1 Wins", 24)
@@ -57,7 +58,7 @@ class MainScene(BaseScene):
             PongBar((50, 300), control_p2),
             PongBar((750, 300), control_p1),
         )
-        
+
         self.collision_manager = CollisionManager()
         self.collision_manager.attach(self.game_objects)
 

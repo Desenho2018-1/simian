@@ -3,7 +3,7 @@ services:
 
   app:
     container_name: simian
-    image: alaxalves/simian:0.0.1
+    image: alaxalves/simian:0.0.3
     stdin_open: true
     tty: true
     command: /bin/bash

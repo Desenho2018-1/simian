@@ -1,6 +1,6 @@
 0.0.1
  - Scene Class
- - SceneManager Class
+ - Scene Manager Class
  - Sound Class
  - Docker Env
  - Integração Contínua
@@ -14,3 +14,12 @@
  - Vagrant Env
  - Manual Técnico do Framework
  - Deploy Contínuo - Docker
+
+0.0.3
+ - Correção de Bugs - PEP8, Coverage, Physics, Pip v10.0.1
+ - Game Canvas
+ - Game Loop
+ - CookieCutter
+ - Physics
+ - GitHub Pages
+ - Mouse Manager

@@ -20,7 +20,7 @@ CLASSIFIERS = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
-    "Programming Language :: Python :: 3.5",
+    "Programming Language :: Python :: 3.6",
     "Programming Language :: Python :: Implementation :: CPython",
     "Programming Language :: Python :: Implementation :: PyPy",
     "Topic :: Software Development :: Libraries :: Python Modules",
@@ -38,7 +38,7 @@ REQUIRES = [str(ir.req) for ir in INSTALL_REQS]
 setup(
     name='simian_engine',
 
-    version='0.0.2',
+    version='0.0.3',
 
     description='A simple 2D game engine implemented with python!',
 

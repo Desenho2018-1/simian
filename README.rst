@@ -35,6 +35,20 @@ Quick Start
 
 $ deactivate
 
+=================
+Setup sample game
+=================
+
+Inside simian folder, run:
+
+    $ simian startproject
+
+Simian will ask you some parameters then a sample game will be created. After that go to the pong folder and run the sample:
+
+    $ cd pong/
+
+    $ simian run
+
 ====
 PyPi
 ====

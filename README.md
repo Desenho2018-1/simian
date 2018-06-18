@@ -6,58 +6,39 @@ A simple 2D game engine implemented with python, using pygame!
 
 Get to know us better at: https://desenho2018-1.github.io/simian/
 
-## Especification
+## Dependencies
 
-- Python v3.6.5
-- pygame v1.9.3
+You should have installed:
+- Python v3.6.5 
 
 ## How to setup your environment to contribute to this project
+Follow these steps on a terminal to create a virtualenv:
 
-1. Follow these steps on a terminal:
+`$ python3.6 -m venv env`
 
-`$ sudo apt-get install python-virtualenv`
+`$ source env/bin/active`
 
-`$ mkdir venv`
+Then go to our simian folder (where you can see setup.py):
 
-`$ virtualenv venv/games`
+`(env) $ pip install -r requirements.txt`
 
-`$ source venv/games/bin/activate`
+`(env) $ python setup.py build`
 
-2. Then go to our simian folder (where you can see setup.py):
+And you ready to run simian!
 
-`(games) $ pip3 install -r requirements.txt`
+## Setup sample game
 
-`(games) $ python3 setup.py build`
+Inside simian folder, run:
 
-You can also use:
+`$ simian startproject`
 
-`$ docker-compose -f docker/docker-compose.yml up --build -d `
+Simian will ask you some parameters, leave them empty and a demo __pong__ game will be created. After that go to the **pong** folder and run the sample:
 
-`$ docker exec -it simian bash`
+`$ cd pong/`
 
-or get more simple with docker:
+`$ simian run`
 
-`$ make run`
-
-If you're a Vagrant Fanboy, just:
-
-`$ vagrant box add ubuntu/xenial64`
-
-`$ vagrant up`
-
-`$ vagrant ssh`
-
-or get more simple with vagrant:
-
-`$ make v-build`
-
-`$ make v-exec`
-
------------------------------------------
-
-And you'll be inside Simian environment!
-
--------------------------------------------
+Then you're running your first game using simian. 
 
 _**To quit this virtual environment just type:**_
 
