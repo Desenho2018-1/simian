@@ -1,6 +1,7 @@
-FROM python:3.5
+FROM python:3.6
 
 LABEL Maintainers=simiangameengine@gmail.com
+LABEL Version=0.0.3
 
 RUN apt-get update && \
     apt-get install -y python3 build-essential python3-pip python3-dev && \
