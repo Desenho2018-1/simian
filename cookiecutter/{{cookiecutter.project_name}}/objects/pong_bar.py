@@ -19,8 +19,8 @@ class PongBar(RigidBody):
         new_position = self.control()*time_elapsed
         self.position += new_position
 
-        height = self.sprite.get_height()
-        middle_height = self.sprite.get_height()/2
+        height = self.sprite.height
+        middle_height = self.sprite.height / 2
 
         if new_position.y < 0 and self.position.y < 3 + middle_height:
             self.position -= new_position

@@ -20,31 +20,37 @@ class Sprite(pygame.sprite.Sprite):
         # Returns the rectangular area of the Surface
         self.rect = self.image.get_rect()
 
+    @property
+    def x(self):
+        return self.rect.x + (self.rect.width / 2)
+
+    @property
+    def y(self):
+        return self.rect.y + (self.rect.height / 2)
+
+    @x.setter
+    def x(self, x):
+        self.rect.x = x - (self.rect.width / 2)
+
+    @y.setter
+    def y(self, y):
+        self.rect.y = y - (self.rect.height / 2)
+
+    @property
+    def width(self):
+        return self.rect.width
+
+    @property
+    def height(self):
+        return self.rect.height
+
     def resize(self, width, height):
         self.image = pygame.transform.scale(self.image, (width, height))
 
         # Since we resized the image, the rect just got bigger!
         self.rect = self.image.get_rect()
 
-    def get_x(self):
-        return self.rect.x + (self.get_width() / 2)
-
-    def get_y(self):
-        return self.rect.y + (self.get_height() / 2)
-
-    def set_x(self, x):
-        self.rect.x = x - (self.get_width() / 2)
-
-    def set_y(self, y):
-        self.rect.y = y - (self.get_height() / 2)
-
-    def get_width(self):
-        return self.rect.width
-
-    def get_height(self):
-        return self.rect.height
-
     def draw(self, graphics, x, y):
-        self.set_x(x)
-        self.set_y(y)
+        self.rect.x = x - (self.rect.width / 2)
+        self.rect.y = y - (self.rect.height / 2)
         graphics.add(self)

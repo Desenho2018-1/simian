@@ -18,7 +18,7 @@ class Ground(RigidBody):
         self.position += self.velocity*time_elapsed
 
     def draw(self, graphics):
-        self.sprite.set_x(self.position.x)
-        self.sprite.set_y(self.position.y)
+        self.sprite.x = self.position.x
+        self.sprite.y = self.position.y
 
         graphics.add(self.sprite)
