@@ -8,6 +8,7 @@ from objects.ground import Ground
 from objects.pong_bar import PongBar
 from objects.ball import Ball
 from simian.engine import GameEngine
+from simian.pool import ObjectPool
 
 
 class MainScene(BaseScene):
@@ -43,18 +44,18 @@ class MainScene(BaseScene):
 
     def load(self):
         self.keyboard = Keyboard()
-        self.ball = Ball((350, 100))
+        self.ball = ObjectPool().get(Ball,350, 100)
         self.game_end = False
         self.game_start = True
         self.game_text2 = Text("Pressione enter para começar", 24)
         self.game_objects = GameObjectList(
             self.ball,
-            Ground((148, 634.5)),
-            Ground((444, 634.5)),
-            Ground((740, 634.5)),
-            Ground((148, -33.5)),
-            Ground((444, -33.5)),
-            Ground((740, -33.5)),
+            ObjectPool().get(Ground,148, 634.5),
+            ObjectPool().get(Ground,444, 634.5),
+            ObjectPool().get(Ground,740, 634.5),
+            ObjectPool().get(Ground,148, -33.5),
+            ObjectPool().get(Ground,444, -33.5),
+            ObjectPool().get(Ground,740, -33.5),
             PongBar((50, 300), control_p2),
             PongBar((750, 300), control_p1),
         )
@@ -63,7 +64,9 @@ class MainScene(BaseScene):
         self.collision_manager.attach(self.game_objects)
 
     def unload(self):
-        pass
+        ObjectPool().release(self.ball)
+        for game_object in self.game_objects:
+            ObjectPool().release(game_object)
 
 
 def control_p1():
