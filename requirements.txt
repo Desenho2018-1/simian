@@ -2,7 +2,7 @@ atomicwrites==1.1.5
 attrs==18.1.0
 certifi==2018.4.16
 chardet==3.0.4
-codecov==2.0.15
+codecov==2.0.16
 contextlib2==0.5.5
 coverage==4.5.1
 cookiecutter==1.6.0
